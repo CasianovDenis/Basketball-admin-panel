@@ -17,9 +17,7 @@ export default function SignUp() {
 
   useEffect(() => {
     const token = localStorage.getItem("JWToken");
-    if (token !== null) navigate("/Workplace");
-    // var base64 = token.split(".")[1];
-    //var decoded_token = JSON.parse(window.atob(base64));
+    if (token !== null) navigate("/Teams");
   }, []);
 
   const create_account = (ev: any) => {

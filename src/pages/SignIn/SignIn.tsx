@@ -14,7 +14,7 @@ export default function SignIn() {
 
   useEffect(() => {
     const token = localStorage.getItem("JWToken");
-    if (token !== null) navigate("/Workplace");
+    if (token !== null) navigate("/Teams");
     // var base64 = token.split(".")[1];
     //var decoded_token = JSON.parse(window.atob(base64));
   }, []);
@@ -45,7 +45,7 @@ export default function SignIn() {
               localStorage.setItem("JWToken", jsonContent.token);
 
               setMessage("Succesfull authentication");
-              navigate("/Workplace");
+              navigate("/Teams");
             }
           });
       } else setMessage("Fields can not be empty");
