@@ -7,17 +7,22 @@ import Upload_image from "../../../../api/public/Upload_image";
 import Delete_image from "../../../../api/public/Delete_image";
 import Create_player from "../../../../api/players/Create_player";
 
-import Select from "../../../../common/components/Select/Custom_select";
+import Select_player_position from "../../../../common/components/Select/Select_player_position";
+import Select_team from "../../../../common/components/Select/Select_team";
+
 export default function Add_player() {
   const navigate = useNavigate();
   const [image_url, setImageUrl] = useState(null);
   const [image_name, setImageName] = useState(null);
   const [message, setMessage] = useState("");
+  const [player_position, setPlayerPosition] = useState(null);
+  const [player_team, setPlayerTeam] = useState(null);
 
   const refName = createRef<HTMLInputElement>(),
-    refDivision = createRef<HTMLInputElement>(),
-    refConference = createRef<HTMLInputElement>(),
-    refYearFoundation = createRef<HTMLInputElement>();
+    refHeight = createRef<HTMLInputElement>(),
+    refWeight = createRef<HTMLInputElement>(),
+    refBirthday = createRef<HTMLInputElement>(),
+    refNumber = createRef<HTMLInputElement>();
 
   useEffect(() => {
     const token = localStorage.getItem("JWToken");
@@ -46,45 +51,63 @@ export default function Add_player() {
   const save_team = () => {
     if (
       refName.current &&
-      refDivision.current &&
-      refConference.current &&
-      refYearFoundation.current
+      refHeight.current &&
+      refWeight.current &&
+      refBirthday.current &&
+      refNumber.current
     ) {
       let name = refName.current.value;
-      let division = refDivision.current.value;
-      let conference = refConference.current.value;
-      let yearfoundation = refYearFoundation.current.value;
+      let height = refHeight.current.value;
+      let weight = refWeight.current.value;
+      let birthday = refBirthday.current.value;
+      let number = refNumber.current.value;
       if (
         name.length > 0 &&
-        division.length > 0 &&
-        conference.length > 0 &&
-        yearfoundation.length > 0
+        height.length > 0 &&
+        height.length > 0 &&
+        weight.length > 0 &&
+        birthday.length > 0 &&
+        number.length > 0 &&
+        player_position !== null &&
+        player_team !== null
       ) {
-        if (yearfoundation.length > 0 && yearfoundation.length <= 4) {
-          if (image_url !== null) {
-            Create_player(
-              name,
-              yearfoundation,
-              division,
-              conference,
-              image_url,
-              function (result: any) {
+        if (weight.length > 0 && weight.length <= 999) {
+          if (height.length > 0 && height.length <= 999) {
+            if (image_url !== null) {
+              let player = {
+                name: name,
+                number: number,
+                position: player_position,
+                team: player_team,
+                birthday: birthday,
+                height: height,
+                weight: weight,
+                avatarUrl: "http://dev.trainee.dex-it.ru" + image_url,
+              };
+              Create_player(player, function (result: any) {
                 setMessage("");
-              }
-            );
-            refName.current.value = "";
-            refDivision.current.value = "";
-            refConference.current.value = "";
-            refYearFoundation.current.value = "";
-            setImageUrl(null);
-          } else setMessage("Please upload image");
-        } else setMessage("Incorrect year");
+              });
+              refName.current.value = "";
+              refHeight.current.value = "";
+              refWeight.current.value = "";
+              refBirthday.current.value = "";
+              refNumber.current.value = "";
+              setImageUrl(null);
+              setPlayerPosition(null);
+              setPlayerTeam(null);
+              setMessage("");
+            } else setMessage("Please upload image");
+          } else setMessage("Height incorrect");
+        } else setMessage("Weight incorrect");
       } else setMessage("Fields can't be empty");
     }
   };
 
-  const test = (ev: any) => {
-    console.log(ev);
+  const set_player_position = (position: any) => {
+    setPlayerPosition(position);
+  };
+  const set_player_team = (position: any) => {
+    setPlayerTeam(position);
   };
   return (
     <div className={style.container}>
@@ -117,22 +140,21 @@ export default function Add_player() {
             <input type="text" ref={refName} />
 
             <p>Position</p>
-            <Select func={test} />
-
-            {/*<input type="text" ref={refDivision} />*/}
+            <Select_player_position func={set_player_position} />
 
             <p>Team</p>
+            <Select_team func={set_player_team} />
+            <div className={style.personal_data_container}>
+              <p>Height(cm)</p>
+              <input type="number" max="999" ref={refHeight} />
+              <p>Weight(kg)</p>
+              <input type="number" max="999" ref={refWeight} />
 
-            <input type="text" ref={refConference} />
-            <p>Height(cm)</p>
-            <input type="number" max="999" ref={refYearFoundation} />
-            <p>Weight(kg)</p>
-            <input type="number" max="999" ref={refYearFoundation} />
-
-            <p>Birthday</p>
-            <input type="number" max="9999" ref={refYearFoundation} />
-            <p>Number</p>
-            <input type="number" max="999" ref={refYearFoundation} />
+              <p>Birthday</p>
+              <input type="date" ref={refBirthday} />
+              <p>Number</p>
+              <input type="number" max="999" ref={refNumber} />
+            </div>
             <p style={{ color: "red" }}>{message}</p>
           </form>
           <button id={style.cancel_button} onClick={cancel_uplaod}>
