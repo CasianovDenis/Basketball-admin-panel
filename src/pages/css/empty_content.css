@@ -29,6 +29,11 @@
     .empty_content {
         margin: 0;
     }
+
+    .empty_content {
+
+        margin-top: 40px;
+    }
 }
 
 @media(max-width:600px) {
