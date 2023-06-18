@@ -1,13 +1,6 @@
 import Toastify from "toastify-js";
 
-export default function Create_team(
-  team_name: any,
-  team_yearfoundation: any,
-  team_division: any,
-  team_conference: any,
-  image_url: any,
-  callback: any
-) {
+export default function Create_player(player_object: any, callback: any) {
   const token = localStorage.getItem("JWToken");
 
   const requestOptions = {
@@ -17,18 +10,21 @@ export default function Create_team(
       Authorization: "Bearer " + token,
     },
     body: JSON.stringify({
-      name: team_name,
-      foundationYear: team_yearfoundation,
-      division: team_division,
-      conference: team_conference,
-      imageUrl: "http://dev.trainee.dex-it.ru" + image_url,
+      name: player_object.name,
+      number: player_object.number,
+      position: player_object.position,
+      team: player_object.team,
+      birthday: player_object.birthday,
+      height: player_object.height,
+      weight: player_object.weight,
+      avatarUrl: player_object.avatarUrl,
     }),
   };
 
-  fetch("http://dev.trainee.dex-it.ru/api/Team/Add", requestOptions)
+  fetch("http://dev.trainee.dex-it.ru/api/Player/Add", requestOptions)
     .then((responseData) => {
       Toastify({
-        text: "Team added successfully",
+        text: "Player added successfully",
         className: "info",
         style: {
           background: "linear-gradient(to right, #1d976c, #93f9b9)",
