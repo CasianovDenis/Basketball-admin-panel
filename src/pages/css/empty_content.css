@@ -1,0 +1,49 @@
+.empty_content {
+    background-color: white;
+    border-radius: 10px;
+
+    margin: auto;
+    width: 400px;
+    margin-top: 30px;
+}
+
+.empty_content img {
+    margin: 20px;
+    width: 350px;
+    height: 300px;
+}
+
+.empty_content p {
+    color: #FF768E;
+    font-size: 25px;
+    margin-left: 130px;
+}
+
+.empty_content label {
+
+
+    margin-left: 100px;
+}
+
+@media(max-width:992px) {
+    .empty_content {
+        margin: 0;
+    }
+}
+
+@media(max-width:600px) {
+    .empty_content {
+        margin: 0;
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    .empty_content img {
+        margin: 10px;
+        width: 95%;
+        height: 95%;
+    }
+
+
+
+}
