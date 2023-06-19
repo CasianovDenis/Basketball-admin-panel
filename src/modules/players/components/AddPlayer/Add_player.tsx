@@ -84,9 +84,7 @@ export default function Add_player() {
                 weight: weight,
                 avatarUrl: "http://dev.trainee.dex-it.ru" + image_url,
               };
-              Create_player(player, function (result: any) {
-                setMessage("");
-              });
+              Create_player(player, function (result: any) {});
               refName.current.value = "";
               refHeight.current.value = "";
               refWeight.current.value = "";
