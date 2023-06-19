@@ -4,6 +4,8 @@
     right: 0;
     top: 0;
     position: absolute;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .search_bar {
@@ -49,6 +51,14 @@
 
 .add_button:hover {
     background-color: #cf5678;
+}
+
+#MuiPagination {
+    width: 50%;
+    position: absolute;
+    bottom: 0;
+    top: 100%;
+    left: 0;
 }
 
 @media (max-width:992px) {
