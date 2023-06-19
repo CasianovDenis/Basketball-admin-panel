@@ -1,0 +1,36 @@
+.card_container {
+    width: 30%;
+    height: 250px;
+    background-color: #303030;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 5px;
+
+    margin: 25px;
+    margin-left: -1px;
+}
+
+.card_container img {
+    margin: auto;
+    width: 150px;
+    height: 150px;
+}
+
+.carousel-caption {
+    background-color: gray;
+    width: 100%;
+    position: initial;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+@media(max-width:600px) {
+    .card_container {
+        width: 45%;
+
+        flex-direction: column;
+
+        margin: 5px;
+        margin-left: 5px;
+    }
+}
