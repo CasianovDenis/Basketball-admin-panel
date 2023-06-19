@@ -40,7 +40,7 @@ export default function Get_players(
           background: "linear-gradient(to right, #eb3349, #f45c43)",
         },
       }).showToast();
-      /// localStorage.removeItem("JWToken");
-      //window.location.assign("/");
+      localStorage.removeItem("JWToken");
+      window.location.assign("/");
     });
 }
