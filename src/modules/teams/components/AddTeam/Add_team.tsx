@@ -1,6 +1,7 @@
 import React, { useEffect, useState, createRef } from "react";
 import style from "./AddTeam.module.css";
 import { useNavigate } from "react-router-dom";
+import Toastify from "toastify-js";
 
 import { FileEarmarkPlus } from "react-bootstrap-icons";
 import Upload_image from "../../../../api/public/Upload_image";
@@ -24,7 +25,13 @@ export default function Add_team() {
   }, []);
 
   const savefile = (ev: any) => {
-    console.log(ev.target.files[0]);
+    Toastify({
+      text: "Start upload image , please wait",
+      className: "info",
+      style: {
+        background: "linear-gradient(to right, #fe8c00, #f83600)",
+      },
+    }).showToast();
 
     Upload_image(ev.target.files[0], function (result: any) {
       let resultFromfunction = result;
@@ -67,15 +74,15 @@ export default function Add_team() {
               division,
               conference,
               image_url,
-              function (result: any) {
-                setMessage("");
-              }
+              function (result: any) {}
             );
+
             refName.current.value = "";
             refDivision.current.value = "";
             refConference.current.value = "";
             refYearFoundation.current.value = "";
             setImageUrl(null);
+            setMessage("");
           } else setMessage("Please upload image");
         } else setMessage("Incorrect year");
       } else setMessage("Fields can't be empty");
