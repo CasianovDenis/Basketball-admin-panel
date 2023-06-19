@@ -30,14 +30,11 @@ export default function Upload_teams_image(file: any, callback: any) {
     })
     .catch((ex) => {
       Toastify({
-        text: "Token isn't actual ",
+        text: "Wrong image format ",
         className: "info",
         style: {
           background: "linear-gradient(to right, #eb3349, #f45c43)",
         },
       }).showToast();
-
-      localStorage.removeItem("JWToken");
-      window.location.assign("/");
     });
 }
