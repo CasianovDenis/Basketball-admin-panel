@@ -1,17 +1,49 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import "../css/card_content.css";
 import style from "./Teams.module.css";
 import "../css/empty_content.css";
 import { Search } from "react-bootstrap-icons";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
+import Get_teams from "../../api/teams/Get_teams";
 
 export default function Teams() {
   const [teams, setTeams] = useState([]);
+  const [team_name, setTeamName] = useState("");
+  const [page_number, setPageNumber] = useState(1);
+  const [page_size, setPageSize] = useState(6);
+  const [page_count, setPageCount] = useState(1);
+  const [request, setRequest] = useState(false);
+
   const navigate = useNavigate();
+
   useEffect(() => {
     const token = localStorage.getItem("JWToken");
     if (token === null) navigate("/");
-  }, []);
+    Get_teams(team_name, page_number, page_size, function (result: any) {
+      let resultFromfunction = result;
+
+      setTeams(resultFromfunction.data);
+
+      let count_records = resultFromfunction.count;
+      if (count_records > 6) {
+        let sum = count_records + page_size;
+        let pagination_count = sum / page_size;
+        setPageCount(Math.trunc(pagination_count));
+      }
+    });
+  }, [request]);
+
+  const change_page = (ev: any) => {
+    let element = ev.target.getAttribute("aria-label");
+
+    const selected_page = element.replace(/\D/g, "");
+
+    setPageNumber(selected_page);
+
+    request === false ? setRequest(true) : setRequest(false);
+  };
   if (teams !== null && teams.length > 0)
     return (
       <div className={style.container_teams}>
@@ -28,42 +60,27 @@ export default function Teams() {
         >
           Add +
         </button>
-        <div className="carousel-inner">
-          <div
-            className="carousel-item active"
-            style={{ width: "350px", height: "350px" }}
-          >
-            <img
-              src="/Images/SignIn_basketball.jpg"
-              className="d-block w-100"
-              alt="..."
-            />
-            <div className="carousel-caption d-none d-md-block">
-              <h5>First slide label</h5>
-              <p>
-                Some representative placeholder content for the first slide.
-              </p>
+
+        {teams.map((item) => {
+          return (
+            <div className="card_container">
+              <img src={item["imageUrl"]} alt={item["name"]} />
+              <div className="carousel-caption d-md-block">
+                <h5>{item["name"]}</h5>
+                <p>Year of foundation {item["foundationYear"]}</p>
+              </div>
             </div>
-          </div>
-          <div className="carousel-item">
-            <img src="..." className="d-block w-100" alt="..." />
-            <div className="carousel-caption d-none d-md-block">
-              <h5>Second slide label</h5>
-              <p>
-                Some representative placeholder content for the second slide.
-              </p>
-            </div>
-          </div>
-          <div className="carousel-item">
-            <img src="..." className="d-block w-100" alt="..." />
-            <div className="carousel-caption d-none d-md-block">
-              <h5>Third slide label</h5>
-              <p>
-                Some representative placeholder content for the third slide.
-              </p>
-            </div>
-          </div>
-        </div>
+          );
+        })}
+
+        <Stack spacing={2}>
+          <Pagination
+            count={page_count}
+            id={style.MuiPagination}
+            color="primary"
+            onClick={change_page}
+          />
+        </Stack>
       </div>
     );
   else
