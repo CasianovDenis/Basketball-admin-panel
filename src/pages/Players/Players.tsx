@@ -1,23 +1,77 @@
 import React, { useEffect, useState } from "react";
 import style from "./Players.module.css";
 import "../css/empty_content.css";
+import "../css/card_content.css";
+
 import { Search } from "react-bootstrap-icons";
 import { useNavigate } from "react-router-dom";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
+import Get_players from "../../api/players/Get_players";
+import Get_team from "../../api/teams/Get_team";
+import Get_teams from "../../api/teams/Get_teams";
 
 export default function Players() {
-  const [players, setPlayers] = useState([]);
   const navigate = useNavigate();
+
+  const [players, setPlayers] = useState([]);
+  const [player_name, setPlayerName] = useState("");
+  const [page_number, setPageNumber] = useState(1);
+  const [page_size, setPageSize] = useState(6);
+  const [page_count, setPageCount] = useState(1);
+  const [request, setRequest] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("JWToken");
     if (token === null) navigate("/");
-  }, []);
+    Get_teams("", page_number, page_size, function (result: any) {
+      let teams_array = result.data;
+
+      Get_players(player_name, page_number, page_size, function (result: any) {
+        let players_array = result.data;
+        for (let index = 0; players_array.length > index; index++) {
+          for (let position = 0; teams_array.length > position; position++) {
+            if (players_array[index].team == teams_array[position].id)
+              players_array[index].team = teams_array[position].name;
+          }
+        }
+        setPlayers(players_array);
+
+        let count_records = result.count;
+        if (count_records > 6) {
+          let sum = count_records + page_size;
+          let pagination_count = sum / page_size;
+          setPageCount(Math.trunc(pagination_count));
+        }
+      });
+    });
+  }, [request]);
+
+  const change_page = (ev: any) => {
+    let element = ev.target.getAttribute("aria-label");
+
+    const selected_page = element.replace(/\D/g, "");
+
+    setPageNumber(selected_page);
+
+    request === false ? setRequest(true) : setRequest(false);
+  };
 
   if (players !== null && players.length > 0)
     return (
       <div className={style.container_players}>
         <div className={style.search_bar}>
-          <input type="text" placeholder="Search..." />
+          <input
+            type="text"
+            placeholder="Search..."
+            onClick={() => {
+              {
+                players.map((item) => {
+                  console.log(item["team"]);
+                });
+              }
+            }}
+          />
           <span>
             <Search size={15} />
           </span>
@@ -29,24 +83,34 @@ export default function Players() {
         >
           Add +
         </button>
-        <div className="carousel-inner">
-          <div
-            className="carousel-item active"
-            style={{ width: "350px", height: "350px" }}
-          >
-            <img
-              src="/Images/SignIn_basketball.jpg"
-              className="d-block w-100"
-              alt="..."
-            />
-            <div className="carousel-caption d-none d-md-block">
-              <h5>First slide label</h5>
-              <p>
-                Some representative placeholder content for the first slide.
-              </p>
+
+        {players.map((item) => {
+          return (
+            <div className="card_container">
+              <img
+                src={item["avatarUrl"]}
+                alt={item["name"]}
+                style={{ marginTop: "28px" }}
+              />
+              <div className="carousel-caption d-md-block">
+                <h5>
+                  {item["name"]}&nbsp;
+                  <label style={{ color: "#d33864" }}>{item["number"]}</label>
+                </h5>
+                <p>{item["team"]}</p>
+              </div>
             </div>
-          </div>
-        </div>
+          );
+        })}
+
+        <Stack spacing={2}>
+          <Pagination
+            count={page_count}
+            id={style.MuiPagination}
+            color="primary"
+            onClick={change_page}
+          />
+        </Stack>
       </div>
     );
   else
