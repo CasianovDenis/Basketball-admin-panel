@@ -12,12 +12,15 @@
 }
 
 .menu_list {
-    overflow: auto;
+
     background-color: #d1d1d1;
     position: absolute;
     width: 70%;
     border-radius: 5px;
     margin-top: 5px;
+    max-height: 135px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .menu_list li {
@@ -38,6 +41,13 @@
 
 @media(max-width:600px) {
     .dropdown button {
+
+        width: 100%;
+
+    }
+
+    .menu_list {
+
 
         width: 100%;
 
