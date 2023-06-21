@@ -71,7 +71,9 @@
     margin-top: 10px;
 }
 
-
+#button_signup :hover {
+    background-color: #cf5678;
+}
 
 @media(max-width:990px) {
     .signup_input {
@@ -100,7 +102,7 @@
     }
 
     .signup_input {
-        width: 100%;
+        width: 90%;
         height: 100%;
         margin-top: 30%;
         margin-left: 10%;
