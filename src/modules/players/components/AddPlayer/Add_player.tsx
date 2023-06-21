@@ -1,6 +1,7 @@
 import React, { useEffect, useState, createRef } from "react";
 import style from "./AddPlayer.module.css";
 import { useNavigate } from "react-router-dom";
+import Toastify from "toastify-js";
 
 import { FileEarmarkPlus } from "react-bootstrap-icons";
 import Upload_image from "../../../../api/public/Upload_image";
@@ -30,7 +31,13 @@ export default function Add_player() {
   }, []);
 
   const savefile = (ev: any) => {
-    console.log(ev.target.files[0]);
+    Toastify({
+      text: "Start upload image , please wait",
+      className: "info",
+      style: {
+        background: "linear-gradient(to right, #fe8c00, #f83600)",
+      },
+    }).showToast();
 
     Upload_image(ev.target.files[0], function (result: any) {
       let resultFromfunction = result;
@@ -91,8 +98,7 @@ export default function Add_player() {
               refBirthday.current.value = "";
               refNumber.current.value = "";
               setImageUrl(null);
-              setPlayerPosition(null);
-              setPlayerTeam(null);
+
               setMessage("");
             } else setMessage("Please upload image");
           } else setMessage("Height incorrect");
