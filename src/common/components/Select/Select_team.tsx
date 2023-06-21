@@ -12,6 +12,8 @@ export default function Select_player_position(props: any) {
   useEffect(() => {
     const token = localStorage.getItem("JWToken");
 
+    if (props.team !== null && props.team !==undefined ) setSelectedTeam(props.team);
+    
     const requestOptions = {
       method: "GET",
       headers: {
