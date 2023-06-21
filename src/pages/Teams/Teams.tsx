@@ -44,6 +44,13 @@ export default function Teams() {
 
     request === false ? setRequest(true) : setRequest(false);
   };
+
+  const open_team_information = (ev: any) => {
+    let id = ev.target.getAttribute("id");
+
+    navigate("/TeamInformation", { state: { team_id: id } });
+  };
+
   if (teams !== null && teams.length > 0)
     return (
       <div className={style.container_teams}>
@@ -63,11 +70,17 @@ export default function Teams() {
 
         {teams.map((item) => {
           return (
-            <div className="card_container">
-              <img src={item["imageUrl"]} alt={item["name"]} />
-              <div className="carousel-caption d-md-block">
-                <h5>{item["name"]}</h5>
-                <p>Year of foundation {item["foundationYear"]}</p>
+            <div
+              className="card_container"
+              id={item["id"]}
+              onClick={open_team_information}
+            >
+              <img src={item["imageUrl"]} alt={item["name"]} id={item["id"]} />
+              <div className="carousel-caption d-md-block" id={item["id"]}>
+                <h5 id={item["id"]}>{item["name"]}</h5>
+                <p id={item["id"]}>
+                  Year of foundation {item["foundationYear"]}
+                </p>
               </div>
             </div>
           );
