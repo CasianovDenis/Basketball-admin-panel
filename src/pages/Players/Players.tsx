@@ -27,23 +27,29 @@ export default function Players() {
     Get_teams("", page_number, page_size, function (result: any) {
       let teams_array = result.data;
 
-      Get_players(player_name, page_number, page_size, function (result: any) {
-        let players_array = result.data;
-        for (let index = 0; players_array.length > index; index++) {
-          for (let position = 0; teams_array.length > position; position++) {
-            if (players_array[index].team == teams_array[position].id)
-              players_array[index].team = teams_array[position].name;
+      Get_players(
+        player_name,
+        page_number,
+        page_size,
+        0,
+        function (result: any) {
+          let players_array = result.data;
+          for (let index = 0; players_array.length > index; index++) {
+            for (let position = 0; teams_array.length > position; position++) {
+              if (players_array[index].team == teams_array[position].id)
+                players_array[index].team = teams_array[position].name;
+            }
+          }
+          setPlayers(players_array);
+
+          let count_records = result.count;
+          if (count_records > 6) {
+            let sum = count_records + page_size;
+            let pagination_count = sum / page_size;
+            setPageCount(Math.trunc(pagination_count));
           }
         }
-        setPlayers(players_array);
-
-        let count_records = result.count;
-        if (count_records > 6) {
-          let sum = count_records + page_size;
-          let pagination_count = sum / page_size;
-          setPageCount(Math.trunc(pagination_count));
-        }
-      });
+      );
     });
   }, [request]);
 
@@ -57,6 +63,11 @@ export default function Players() {
     request === false ? setRequest(true) : setRequest(false);
   };
 
+  const open_player_information = (ev: any) => {
+    let id = ev.target.getAttribute("id");
+
+    navigate("/PlayerInformation", { state: { player_id: id } });
+  };
   if (players !== null && players.length > 0)
     return (
       <div className={style.container_players}>
@@ -86,18 +97,23 @@ export default function Players() {
 
         {players.map((item) => {
           return (
-            <div className="card_container">
+            <div
+              className="card_container"
+              id={item["id"]}
+              onClick={open_player_information}
+            >
               <img
                 src={item["avatarUrl"]}
                 alt={item["name"]}
-                style={{ marginTop: "28px" }}
+                style={{ marginTop: "28px", width: "200px" }}
+                id={item["id"]}
               />
-              <div className="carousel-caption d-md-block">
-                <h5>
+              <div className="carousel-caption d-md-block" id={item["id"]}>
+                <h5 id={item["id"]}>
                   {item["name"]}&nbsp;
-                  <label style={{ color: "#d33864" }}>{item["number"]}</label>
+                  <label style={{ color: "#d33864" }}>#{item["number"]}</label>
                 </h5>
-                <p>{item["team"]}</p>
+                <p id={item["id"]}>{item["team"]}</p>
               </div>
             </div>
           );
