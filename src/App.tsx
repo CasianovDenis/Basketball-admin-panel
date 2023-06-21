@@ -11,12 +11,13 @@ import SignIn from "./pages/SignIn/SignIn";
 import SignUp from "./pages/SignUp/SignUp";
 import Teams from "./pages/Teams/Teams";
 import Add_team from "./modules/teams/components/AddTeam/Add_team";
+import Team_information from "./modules/teams/components/Team_information/Team_information";
+import Edit_team from "./modules/teams/components/Edit_team_data/Edit_team";
 
 import Players from "./pages/Players/Players";
 import Add_player from "./modules/players/components/AddPlayer/Add_player";
-//import { Context } from "./components/Context.js";
-
-//import "./custom.css";
+import Player_information from "./modules/players/components/Player_information/Player_information";
+import Edit_player from "./modules/players/components/Edit_player_data/Edit_player";
 
 export default function App() {
   return (
@@ -30,9 +31,13 @@ export default function App() {
 
         <Route path="/Players" element={<Players />} />
         <Route path="/AddPlayer" element={<Add_player />} />
+        <Route path="/PlayerInformation" element={<Player_information />} />
+        <Route path="/EditPlayer" element={<Edit_player />} />
 
         <Route path="/Teams" element={<Teams />} />
         <Route path="/AddTeam" element={<Add_team />} />
+        <Route path="/TeamInformation" element={<Team_information />} />
+        <Route path="/EditTeam" element={<Edit_team />} />
       </Routes>
     </BrowserRouter>
   );
