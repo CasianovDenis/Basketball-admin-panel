@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import style from "./Custom_select.module.css";
 
@@ -6,6 +6,10 @@ export default function Select_player_position(props: any) {
   const [selected_position, setSelectedPosition] = useState("Select");
   const [list_display, setListDisplay] = useState(false);
 
+  useEffect(() => {
+    if (props.position !== null && props.team !== undefined)
+      setSelectedPosition(props.position);
+  }, []);
   const select_position = (ev: any) => {
     let position = ev.target.getAttribute("title");
     setSelectedPosition(position);
