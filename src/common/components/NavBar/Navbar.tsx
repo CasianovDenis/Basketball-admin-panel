@@ -50,9 +50,8 @@ export default function SignIn() {
         >
           <div id="navbarSupportedContent">
             <div className="navbar_user">
-              <label>{decoded_token.user}</label>
-
               <PersonCircle color={"gray"} size={30} />
+              <p>{decoded_token.user}</p>
             </div>
             <hr />
           </div>
@@ -83,8 +82,8 @@ export default function SignIn() {
           </div>
 
           <div className="logout" onClick={exit_account}>
-            <BoxArrowLeft size={22} />
-            <label style={{ marginLeft: "2px" }}>Sign Out</label>
+            <BoxArrowLeft size={22} style={{ marginLeft: "20px" }} />
+            <p style={{ marginLeft: "2px" }}>Sign Out</p>
           </div>
         </nav>
 
@@ -105,7 +104,7 @@ export default function SignIn() {
               <span className="navbar-toggler-icon"></span>
             </button>
 
-            <a className="navbar-brand" href="#">
+            <a className="navbar-brand" href="/Teams">
               <img src="/Images/logo.png" height="50" />
             </a>
 
