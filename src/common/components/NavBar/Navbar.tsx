@@ -51,7 +51,7 @@ export default function SignIn() {
           <div id="navbarSupportedContent">
             <div className="navbar_user">
               <PersonCircle color={"gray"} size={30} />
-              <p>{decoded_token.user}</p>
+              <p style={{ marginLeft: "-10px" }}>{decoded_token.user}</p>
             </div>
             <hr />
           </div>
@@ -110,7 +110,7 @@ export default function SignIn() {
 
             <div className="collapse navbar-collapse">
               <div className="navbar_user">
-                <label>{decoded_token.user}</label>
+                <label style={{ margin: "15px" }}>{decoded_token.user}</label>
 
                 <PersonCircle color={"gray"} size={30} />
               </div>
