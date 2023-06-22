@@ -54,6 +54,7 @@
     ]
   },
   "devDependencies": {
-    "@types/toastify-js": "^1.11.1"
+    "@types/toastify-js": "^1.11.1",
+    "prettier": "^2.8.8"
   }
 }
