@@ -121,7 +121,9 @@ export default function Edit_player() {
                 id: player_id,
               };
               Update_player(player, function (result: any) {});
-
+              navigate("/PlayerInformation", {
+                state: { player_id: player_id },
+              });
               setMessage("");
             } else setMessage("Please upload image");
           } else setMessage("Height incorrect");

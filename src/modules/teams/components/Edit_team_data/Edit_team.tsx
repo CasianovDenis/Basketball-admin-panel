@@ -97,7 +97,9 @@ export default function Edit_team() {
               team_id,
               function (result: any) {}
             );
-
+            navigate("/PlayerInformation", {
+              state: { team_id: team_id },
+            });
             setMessage("");
           } else setMessage("Please upload image");
         } else setMessage("Incorrect year");
