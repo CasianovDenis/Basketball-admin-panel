@@ -115,13 +115,15 @@ export default function Add_player() {
   };
   return (
     <div className={style.container}>
-      <label
-        onClick={() => navigate("/Players")}
-        style={{ cursor: "pointer", color: "#d33864" }}
-      >
-        Players/
-      </label>
-      <label style={{ color: "#d33864" }}>Add new player</label>
+      <div style={{ margin: "20px" }}>
+        <label
+          onClick={() => navigate("/Players")}
+          style={{ cursor: "pointer", color: "#d33864" }}
+        >
+          Players/
+        </label>
+        <label style={{ color: "#d33864" }}>Add new player</label>
+      </div>
       <div className={style.container_addplayer}>
         <div
           className={style.upload_image}
@@ -132,7 +134,7 @@ export default function Add_player() {
           }}
         >
           <label htmlFor="file_input">
-            <FileEarmarkPlus size={50} />
+            <img src="/Icon/add_photo_icon.svg" />
           </label>
 
           <input id="file_input" type="file" style={{ display: "none" }} />

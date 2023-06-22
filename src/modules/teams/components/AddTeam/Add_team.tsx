@@ -90,13 +90,15 @@ export default function Add_team() {
   };
   return (
     <div className={style.container}>
-      <label
-        onClick={() => navigate("/Teams")}
-        style={{ cursor: "pointer", color: "#d33864" }}
-      >
-        Teams/
-      </label>
-      <label style={{ color: "#d33864" }}>Add new team</label>
+      <div style={{ margin: "20px" }}>
+        <label
+          onClick={() => navigate("/Teams")}
+          style={{ cursor: "pointer", color: "#d33864" }}
+        >
+          Teams/
+        </label>
+        <label style={{ color: "#d33864" }}>Add new team</label>
+      </div>
       <div className={style.container_addteam}>
         <div
           className={style.upload_image}
@@ -107,7 +109,7 @@ export default function Add_team() {
           }}
         >
           <label htmlFor="file_input">
-            <FileEarmarkPlus size={50} />
+            <img src="/Icon/add_photo_icon.svg" />
           </label>
 
           <input id="file_input" type="file" style={{ display: "none" }} />
