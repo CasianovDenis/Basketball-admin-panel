@@ -1,7 +1,7 @@
 .card_container {
-    width: 30%;
-    height: 250px;
-    background-color: #303030;
+    width: 400px;
+    height: 300px;
+    background-color: #484848;
     display: flex;
     flex-wrap: wrap;
     border-radius: 5px;
@@ -13,25 +13,35 @@
 
 .card_container img {
     margin: auto;
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
 }
 
 .carousel-caption {
-    background-color: gray;
+    background-color: #303030;
     width: 100%;
+    height:100px;
     position: initial;
-    padding-top: 0;
+   
     padding-bottom: 0;
+
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 @media(max-width:600px) {
     .card_container {
-        width: 45%;
+        width: 250px;
 
         flex-direction: column;
 
         margin: 5px;
         margin-left: 5px;
+    }
+
+    .card_container img {
+       
+        width: 100px;
+        height: 100px;
     }
 }

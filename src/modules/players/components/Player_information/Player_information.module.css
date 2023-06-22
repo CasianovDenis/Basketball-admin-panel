@@ -1,11 +1,10 @@
 .container_playerInformation {
-    margin: 80px;
+    margin: 90px;
     left: 100px;
     right: 0;
     top: 0;
     position: absolute;
     width: 80%;
-
 }
 
 .nav_block {
@@ -33,12 +32,11 @@
 .player_information {
     width: 100%;
     display: flex;
-    background-color: #303030;
+    background-color: #484848;
     border-radius: 5px;
 
     border-top-right-radius: 0px;
     border-top-left-radius: 0px;
-
 }
 
 #player_name {
@@ -67,13 +65,11 @@
     color: white;
 }
 
-@media(max-width:992px) {
+@media (max-width: 992px) {
     .container_playerInformation {
-        margin: 80px;
-        left: 80px;
+        left: 60px;
         position: absolute;
         width: 80%;
-
     }
 
     #player_name {
@@ -87,7 +83,6 @@
         grid-template-columns: 100px 50px 100px 50px;
         grid-template-rows: auto auto auto auto;
         position: absolute;
-
     }
 
     .personal_player_information p {
@@ -100,8 +95,7 @@
     }
 }
 
-@media(max-width:600px) {
-
+@media (max-width: 600px) {
     .container_playerInformation {
         margin: 0px;
         left: 0px;
