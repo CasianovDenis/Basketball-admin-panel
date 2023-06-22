@@ -7,7 +7,7 @@ export default function Select_player_position(props: any) {
   const [list_display, setListDisplay] = useState(false);
 
   useEffect(() => {
-    if (props.position !== null && props.team !== undefined)
+    if (props.position !== null && props.position !== undefined)
       setSelectedPosition(props.position);
   }, []);
   const select_position = (ev: any) => {
