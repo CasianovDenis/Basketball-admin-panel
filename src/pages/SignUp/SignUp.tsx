@@ -3,7 +3,7 @@ import { sha256 } from "js-sha256";
 import { useNavigate } from "react-router-dom";
 
 import style from "./SignUp.module.css";
-
+import Signup_image from "./Signup_image.png";
 export default function SignUp() {
   const navigate = useNavigate();
 
@@ -81,20 +81,7 @@ export default function SignUp() {
   };
 
   const accept = () => {
-    /*
-     
-},
-watch: {
-  user_logged_in: {
-    handler() {
-      const token = localStorage.getItem("JWToken");
-      if (token !== null) window.location.replace("/Workplace");
-    },
-    immediate: true,
-  },
-},
 
-*/
     accept_agreement === false
       ? setAcceptAgreement(true)
       : setAcceptAgreement(false);
@@ -102,8 +89,8 @@ watch: {
 
   return (
     <div className={style.container_signup}>
-      <div>
-        <img src="/Images/SignUp_basketball.jpg" id={style.signup_image} />
+      <div className={style.image_container}>
+        <img src={Signup_image} id={style.signup_image} />
       </div>
       <div className={style.signup_input}>
         <form>

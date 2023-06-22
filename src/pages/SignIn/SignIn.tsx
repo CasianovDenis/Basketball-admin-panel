@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import style from "./SignIn.module.css";
 
 import { sha256 } from "js-sha256";
+import Signin_image from "./Signin_image.png";
 
 export default function SignIn() {
   const navigate = useNavigate();
@@ -54,8 +55,8 @@ export default function SignIn() {
 
   return (
     <div className={style.container_login}>
-      <div>
-        <img src="/Images/SignIn_basketball.jpg" id={style.signin_image} />
+      <div className={style.image_container}>
+        <img src={Signin_image}  />
       </div>
 
       <div className={style.login_input}>
