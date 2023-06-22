@@ -52,13 +52,13 @@ export default function Player_information() {
           <label style={{ color: "#d33864" }}>{player_name}</label>
 
           <div className={style.action_container}>
-            <PencilSquare
-              size={25}
-              fill="gray"
+            <img src="/Icon/create_icon.svg"
+             
+           
               onClick={() =>
                 navigate("/EditPlayer", { state: { id: player_id } })
               }
-              style={{ margin: "25px" }}
+              style={{ margin: "25px",cursor:"pointer" }}
             />
             <Trash size={25} fill="#d33864" onClick={delete_player} />
           </div>

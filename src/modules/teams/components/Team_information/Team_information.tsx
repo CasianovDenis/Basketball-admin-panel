@@ -82,11 +82,10 @@ export default function Team_information() {
           <label style={{ color: "#d33864" }}>{team_name}</label>
 
           <div className={style.action_container}>
-            <PencilSquare
-              size={25}
-              fill="gray"
+            <img
+              src="/Icon/create_icon.svg"
               onClick={() => navigate("/EditTeam", { state: { id: team_id } })}
-              style={{ margin: "25px" }}
+              style={{ margin: "25px", cursor: "pointer" }}
             />
             <Trash size={25} fill="#d33864" onClick={delete_team} />
           </div>
