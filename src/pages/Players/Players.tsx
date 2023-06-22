@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import Get_players from "../../api/players/Get_players";
-import Get_team from "../../api/teams/Get_team";
+
 import Get_teams from "../../api/teams/Get_teams";
 
 export default function Players() {
@@ -40,6 +40,7 @@ export default function Players() {
                 players_array[index].team = teams_array[position].name;
             }
           }
+
           setPlayers(players_array);
 
           let count_records = result.count;
@@ -54,12 +55,17 @@ export default function Players() {
   }, [request]);
 
   const change_page = (ev: any) => {
-    let element = ev.target.getAttribute("aria-label");
+    try {
+      let element = ev.target.getAttribute("aria-label");
+      const selected_page = element.replace(/\D/g, "");
 
-    const selected_page = element.replace(/\D/g, "");
-
-    setPageNumber(selected_page);
-
+      setPageNumber(selected_page);
+    } catch {
+      let arrow_element = ev.target.getAttribute("data-testid");
+      arrow_element === "NavigateNextIcon"
+        ? setPageNumber(page_number + 1)
+        : setPageNumber(page_number - 1);
+    }
     request === false ? setRequest(true) : setRequest(false);
   };
 
@@ -102,12 +108,7 @@ export default function Players() {
               id={item["id"]}
               onClick={open_player_information}
             >
-              <img
-                src={item["avatarUrl"]}
-                alt={item["name"]}
-                style={{ marginTop: "28px", width: "200px" }}
-                id={item["id"]}
-              />
+              <img src={item["avatarUrl"]} alt={item["name"]} id={item["id"]} />
               <div className="carousel-caption d-md-block" id={item["id"]}>
                 <h5 id={item["id"]}>
                   {item["name"]}&nbsp;
@@ -146,7 +147,7 @@ export default function Players() {
           Add +
         </button>
         <div className="empty_content">
-          <img src="/Images/players_empty.jpg" />
+          <img src="/Images/players_empty.png" style={{ width: "300px" }} />
           <p>Empty Here</p>
           <label>Add new players to continue</label>
         </div>

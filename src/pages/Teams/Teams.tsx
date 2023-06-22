@@ -36,12 +36,17 @@ export default function Teams() {
   }, [request]);
 
   const change_page = (ev: any) => {
-    let element = ev.target.getAttribute("aria-label");
+    try {
+      let element = ev.target.getAttribute("aria-label");
+      const selected_page = element.replace(/\D/g, "");
 
-    const selected_page = element.replace(/\D/g, "");
-
-    setPageNumber(selected_page);
-
+      setPageNumber(selected_page);
+    } catch {
+      let arrow_element = ev.target.getAttribute("data-testid");
+      arrow_element === "NavigateNextIcon"
+        ? setPageNumber(page_number + 1)
+        : setPageNumber(page_number - 1);
+    }
     request === false ? setRequest(true) : setRequest(false);
   };
 
@@ -113,7 +118,7 @@ export default function Teams() {
           Add +
         </button>
         <div className="empty_content">
-          <img src="/Images/teams_empty.jpg" />
+          <img src="/Images/teams_empty.png" />
           <p>Empty Here</p>
           <label>Add new teams to continue</label>
         </div>
