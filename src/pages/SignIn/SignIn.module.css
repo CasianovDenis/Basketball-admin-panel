@@ -12,11 +12,16 @@
     font-size: 25px;
 }
 
-#signin_image {
-    width: 800px;
-    height: 100%;
+.image_container{
+ background-color:#f5fbff;   
+ width:55%;
+ display: flex;
 }
-
+.image_container img{
+    width:500px;
+    height:300px;
+    margin:auto
+   }
 .login_input {
     width: 40%;
     height: 40%;
@@ -70,9 +75,10 @@
         height: 60%;
         margin-left: 10%;
     }
-    #signin_image {
-        width: 400px;
-    }
+   
+    .image_container img{
+        width:100%;
+       }
 }
 
 @media (max-width: 600px) {
@@ -80,9 +86,10 @@
         flex-direction: column;
     }
 
-    #signin_image {
-        display: none;
-    }
+   
+.image_container img{
+    display: none;
+   }
 
     .page_title {
         margin-left: 30%;
