@@ -1,6 +1,6 @@
 .container {
   width: 70%;
-  height: 80%;
+  height: 100%;
   background-color: white;
   margin: 90px;
   left: 190px;
@@ -84,11 +84,13 @@
   background-repeat: no-repeat;
   background-size: 200px;
   display: flex;
+  cursor: pointer;
 }
 
 .upload_image label {
   width: 300px;
   height: 200px;
+  cursor: pointer;
 }
 
 .upload_image img {
@@ -122,10 +124,18 @@
   }
 
   .upload_image {
+    width: 185px;
+    height: 144px;
     background-color: #d1d1d1;
     border-radius: 10px;
     position: relative;
     margin: auto;
+  }
+
+  .upload_image img {
+    top: 30%;
+    width: 50px;
+    height: 50px;
   }
 
   .inputBox {
