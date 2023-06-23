@@ -3,7 +3,6 @@ import style from "./AddPlayer.module.css";
 import { useNavigate } from "react-router-dom";
 import Toastify from "toastify-js";
 
-import { FileEarmarkPlus } from "react-bootstrap-icons";
 import Upload_image from "../../../../api/public/Upload_image";
 import Delete_image from "../../../../api/public/Delete_image";
 import Create_player from "../../../../api/players/Create_player";
@@ -15,9 +14,19 @@ export default function Add_player() {
   const navigate = useNavigate();
   const [image_url, setImageUrl] = useState(null);
   const [image_name, setImageName] = useState(null);
-  const [message, setMessage] = useState("");
+
   const [player_position, setPlayerPosition] = useState(null);
   const [player_team, setPlayerTeam] = useState(null);
+
+  const [wrong_name, setWrongName] = useState("");
+  const [wrong_position, setWrongPosition] = useState("");
+  const [wrong_team, setWrongTeam] = useState("");
+  const [wrong_height, setWrongHeight] = useState("");
+  const [wrong_weight, setWrongWeight] = useState("");
+  const [wrong_birthday, setWrongBirtdhay] = useState("");
+  const [wrong_number, setWrongNumber] = useState("");
+
+  const [message, setMessage] = useState("");
 
   const refName = createRef<HTMLInputElement>(),
     refHeight = createRef<HTMLInputElement>(),
@@ -64,46 +73,66 @@ export default function Add_player() {
       refNumber.current
     ) {
       let name = refName.current.value;
-      let height = refHeight.current.value;
-      let weight = refWeight.current.value;
+      let height = Number(refHeight.current.value);
+      let weight = Number(refWeight.current.value);
       let birthday = refBirthday.current.value;
       let number = refNumber.current.value;
       if (
         name.length > 0 &&
-        height.length > 0 &&
-        height.length > 0 &&
-        weight.length > 0 &&
+        height > 0 &&
+        height > 0 &&
+        weight > 0 &&
         birthday.length > 0 &&
         number.length > 0 &&
         player_position !== null &&
         player_team !== null
       ) {
-        if (weight.length > 0 && weight.length <= 999) {
-          if (height.length > 0 && height.length <= 999) {
-            if (image_url !== null) {
-              let player = {
-                name: name,
-                number: number,
-                position: player_position,
-                team: player_team,
-                birthday: birthday,
-                height: height,
-                weight: weight,
-                avatarUrl: "http://dev.trainee.dex-it.ru" + image_url,
-              };
-              Create_player(player, function (result: any) {});
-              refName.current.value = "";
-              refHeight.current.value = "";
-              refWeight.current.value = "";
-              refBirthday.current.value = "";
-              refNumber.current.value = "";
-              setImageUrl(null);
+        setWrongName("");
+        setWrongBirtdhay("");
+        setWrongHeight("");
+        setWrongWeight("");
+        setWrongNumber("");
+        setWrongPosition("");
+        setWrongTeam("");
+        if (height > 0 && height <= 999) {
+          if (weight > 0 && weight <= 999) {
+            let actual_year = new Date().getFullYear();
+            let year_player = new Date(birthday).getFullYear();
+            if (year_player <= actual_year && year_player > 0) {
+              if (image_url !== null) {
+                let player = {
+                  name: name,
+                  number: number,
+                  position: player_position,
+                  team: player_team,
+                  birthday: birthday,
+                  height: height,
+                  weight: weight,
+                  avatarUrl: "http://dev.trainee.dex-it.ru" + image_url,
+                };
+                Create_player(player, function (result: any) {});
+                refName.current.value = "";
+                refHeight.current.value = "";
+                refWeight.current.value = "";
+                refBirthday.current.value = "";
+                refNumber.current.value = "";
+                setImageUrl(null);
 
-              setMessage("");
-            } else setMessage("Please upload image");
-          } else setMessage("Height incorrect");
-        } else setMessage("Weight incorrect");
-      } else setMessage("Fields can't be empty");
+                setMessage("");
+                navigate("/Players");
+              } else setMessage("Please upload image");
+            } else setWrongBirtdhay("Incorrect birthday year");
+          } else setWrongWeight("Weight incorrect");
+        } else setWrongHeight("Height incorrect");
+      } else {
+        setWrongName("Fields can't be empty");
+        setWrongBirtdhay("Fields can't be empty");
+        setWrongHeight("Fields can't be empty");
+        setWrongWeight("Fields can't be empty");
+        setWrongNumber("Fields can't be empty");
+        setWrongPosition("Fields can't be empty");
+        setWrongTeam("Fields can't be empty");
+      }
     }
   };
 
@@ -144,24 +173,35 @@ export default function Add_player() {
           <form>
             <p>Name</p>
             <input type="text" ref={refName} />
-
+            <p style={{ color: "red" }}>{wrong_name}</p>
             <p>Position</p>
             <Select_player_position func={set_player_position} />
-
+            <p style={{ color: "red" }}>{wrong_position}</p>
             <p>Team</p>
             <Select_team func={set_player_team} />
+            <p style={{ color: "red" }}>{wrong_team}</p>
             <div className={style.personal_data_container}>
-              <p>Height(cm)</p>
-              <input type="number" max="999" ref={refHeight} />
-              <p>Weight(kg)</p>
-              <input type="number" max="999" ref={refWeight} />
-
-              <p>Birthday</p>
-              <input type="date" ref={refBirthday} />
-              <p>Number</p>
-              <input type="number" max="999" ref={refNumber} />
+              <div>
+                <p>Height(cm)</p>
+                <input type="number" max="999" ref={refHeight} />
+                <p style={{ color: "red" }}>{wrong_height}</p>
+              </div>
+              <div>
+                <p>Weight(kg)</p>
+                <input type="number" max="999" ref={refWeight} />
+                <p style={{ color: "red" }}>{wrong_weight}</p>
+              </div>
+              <div>
+                <p>Birthday</p>
+                <input type="date" ref={refBirthday} />
+                <p style={{ color: "red" }}>{wrong_birthday}</p>
+              </div>
+              <div>
+                <p>Number</p>
+                <input type="number" max="999" ref={refNumber} />
+                <p style={{ color: "red" }}>{wrong_number}</p>
+              </div>
             </div>
-            <p style={{ color: "red" }}>{message}</p>
           </form>
           <button id={style.cancel_button} onClick={cancel_uplaod}>
             Cancel
@@ -169,6 +209,7 @@ export default function Add_player() {
           <button id={style.save_button} onClick={save_team}>
             Save
           </button>
+          <p style={{ color: "red" }}>{message}</p>
         </div>
       </div>
     </div>

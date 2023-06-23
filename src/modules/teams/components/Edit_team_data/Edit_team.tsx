@@ -4,7 +4,6 @@ import { useNavigate, useLocation } from "react-router-dom";
 import Toastify from "toastify-js";
 import "../../../../pages/css/loading_spinner.css";
 
-import { FileEarmarkPlus } from "react-bootstrap-icons";
 import Upload_image from "../../../../api/public/Upload_image";
 import Delete_image from "../../../../api/public/Delete_image";
 import Update_team from "../../../../api/teams/Update_team";
@@ -21,6 +20,12 @@ export default function Edit_team() {
   const [team_division, setTeamDivision] = useState("");
   const [team_conference, setTeamConference] = useState("");
   const [team_yearFoundation, setTeamYearFoundation] = useState(0);
+
+  const [wrong_name, setWrongName] = useState("");
+  const [wrong_division, setWrongDivision] = useState("");
+  const [wrong_conference, setWrongConference] = useState("");
+  const [wrong_yearFoundation, setWrongYearFoundation] = useState("");
+
   const team_id = location.state.id;
 
   const refName = createRef<HTMLInputElement>(),
@@ -86,6 +91,10 @@ export default function Edit_team() {
         conference.length > 0 &&
         yearfoundation.length > 0
       ) {
+        setWrongName("");
+        setWrongYearFoundation("");
+        setWrongConference("");
+        setWrongDivision("");
         if (yearfoundation.length > 0 && yearfoundation.length <= 4) {
           if (image_url !== null) {
             Update_team(
@@ -103,19 +112,26 @@ export default function Edit_team() {
             setMessage("");
           } else setMessage("Please upload image");
         } else setMessage("Incorrect year");
-      } else setMessage("Fields can't be empty");
+      } else {
+        setWrongName("Fields can't be empty");
+        setWrongYearFoundation("Fields can't be empty");
+        setWrongConference("Fields can't be empty");
+        setWrongDivision("Fields can't be empty");
+      }
     }
   };
   if (team_yearFoundation > 0)
     return (
       <div className={style.container}>
-        <label
-          onClick={() => navigate("/Teams")}
-          style={{ cursor: "pointer", color: "#d33864" }}
-        >
-          Teams/
-        </label>
-        <label style={{ color: "#d33864" }}>Edit team information</label>
+        <div style={{ margin: "20px" }}>
+          <label
+            onClick={() => navigate("/Teams")}
+            style={{ cursor: "pointer", color: "#d33864" }}
+          >
+            Teams/
+          </label>
+          <label style={{ color: "#d33864" }}>Edit team information</label>
+        </div>
         <div className={style.container_editteam}>
           <div
             className={style.upload_image}
@@ -125,7 +141,7 @@ export default function Edit_team() {
             }}
           >
             <label htmlFor="file_input">
-              <FileEarmarkPlus size={50} />
+              <img src="/Icon/add_photo_icon.svg" />
             </label>
 
             <input id="file_input" type="file" style={{ display: "none" }} />
@@ -135,21 +151,21 @@ export default function Edit_team() {
             <form>
               <p>Name</p>
               <input type="text" ref={refName} defaultValue={team_name} />
-
+              <p style={{ color: "red" }}>{wrong_name}</p>
               <p>Division</p>
               <input
                 type="text"
                 ref={refDivision}
                 defaultValue={team_division}
               />
-
+              <p style={{ color: "red" }}>{wrong_name}</p>
               <p>Conference</p>
               <input
                 type="text"
                 ref={refConference}
                 defaultValue={team_conference}
               />
-
+              <p style={{ color: "red" }}>{wrong_conference}</p>
               <p>Year of foundation</p>
               <input
                 type="number"
@@ -157,7 +173,7 @@ export default function Edit_team() {
                 ref={refYearFoundation}
                 defaultValue={team_yearFoundation}
               />
-              <p style={{ color: "red" }}>{message}</p>
+              <p style={{ color: "red" }}>{wrong_yearFoundation}</p>
             </form>
             <button id={style.cancel_button} onClick={cancel_uplaod}>
               Cancel
@@ -165,6 +181,7 @@ export default function Edit_team() {
             <button id={style.save_button} onClick={save_team}>
               Save
             </button>
+            <p style={{ color: "red" }}>{message}</p>
           </div>
         </div>
       </div>

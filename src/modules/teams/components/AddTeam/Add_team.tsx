@@ -3,7 +3,6 @@ import style from "./AddTeam.module.css";
 import { useNavigate } from "react-router-dom";
 import Toastify from "toastify-js";
 
-import { FileEarmarkPlus } from "react-bootstrap-icons";
 import Upload_image from "../../../../api/public/Upload_image";
 import Delete_image from "../../../../api/public/Delete_image";
 import Create_team from "../../../../api/teams/Create_team";
@@ -12,6 +11,10 @@ export default function Add_team() {
   const navigate = useNavigate();
   const [image_url, setImageUrl] = useState(null);
   const [image_name, setImageName] = useState(null);
+  const [wrong_name, setWrongName] = useState("");
+  const [wrong_division, setWrongDivision] = useState("");
+  const [wrong_conference, setWrongConference] = useState("");
+  const [wrong_yearFoundation, setWrongYearFoundation] = useState("");
   const [message, setMessage] = useState("");
 
   const refName = createRef<HTMLInputElement>(),
@@ -66,6 +69,10 @@ export default function Add_team() {
         conference.length > 0 &&
         yearfoundation.length > 0
       ) {
+        setWrongName("");
+        setWrongYearFoundation("");
+        setWrongConference("");
+        setWrongDivision("");
         if (yearfoundation.length > 0 && yearfoundation.length <= 4) {
           if (image_url !== null) {
             Create_team(
@@ -83,9 +90,16 @@ export default function Add_team() {
             refYearFoundation.current.value = "";
             setImageUrl(null);
             setMessage("");
+            setWrongYearFoundation("");
+            navigate("/Teams");
           } else setMessage("Please upload image");
-        } else setMessage("Incorrect year");
-      } else setMessage("Fields can't be empty");
+        } else setWrongYearFoundation("Incorrect year");
+      } else {
+        setWrongName("Fields can't be empty");
+        setWrongYearFoundation("Fields can't be empty");
+        setWrongConference("Fields can't be empty");
+        setWrongDivision("Fields can't be empty");
+      }
     }
   };
   return (
@@ -119,16 +133,16 @@ export default function Add_team() {
           <form>
             <p>Name</p>
             <input type="text" ref={refName} />
-
+            <p style={{ color: "red" }}>{wrong_name}</p>
             <p>Division</p>
             <input type="text" ref={refDivision} />
-
+            <p style={{ color: "red" }}>{wrong_division}</p>
             <p>Conference</p>
             <input type="text" ref={refConference} />
-
+            <p style={{ color: "red" }}>{wrong_conference}</p>
             <p>Year of foundation</p>
             <input type="number" max="9999" ref={refYearFoundation} />
-            <p style={{ color: "red" }}>{message}</p>
+            <p style={{ color: "red" }}>{wrong_yearFoundation}</p>
           </form>
           <button id={style.cancel_button} onClick={cancel_uplaod}>
             Cancel
@@ -136,6 +150,7 @@ export default function Add_team() {
           <button id={style.save_button} onClick={save_team}>
             Save
           </button>
+          <p style={{ color: "red" }}>{message}</p>
         </div>
       </div>
     </div>
