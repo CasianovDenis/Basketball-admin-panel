@@ -1,91 +1,91 @@
 .container_players {
-    margin: 80px;
-    left: 200px;
-    right: 0;
-    top: 0;
-    position: absolute;
-    display: flex;
-    flex-wrap: wrap;
+  margin: 100px;
+  left: 200px;
+  right: 0;
+  top: 0;
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .search_bar {
-    width: 100%;
-    position: relative;
-    top: 5px;
+  width: 100%;
+  position: relative;
+  top: 5px;
 }
 
 .search_bar input {
-    border-radius: 3px;
-    background-color: white;
-    border: 0;
+  border-radius: 3px;
+  background-color: white;
+  border: 0;
 
-    width: 30%;
-    height: 35px;
-    padding-right: 1.5rem;
+  width: 30%;
+  height: 35px;
+  padding-right: 1.5rem;
 }
 
 .search_bar input:hover {
-    background-color: #9c9c9c;
+  background-color: #9c9c9c;
 }
 
 .search_bar input:focus {
-    outline-color: rgb(90, 90, 182);
+  outline-color: rgb(90, 90, 182);
 }
 
 .search_bar span {
-    margin-left: -20px;
+  margin-left: -20px;
 }
 
 .add_button {
-    border: 0;
-    color: white;
-    background-color: #d33864;
-    border-radius: 5px;
-    margin: 5px;
-    height: 40px;
-    width: 100px;
-    position: absolute;
-    right: 0;
-    top: 0;
+  border: 0;
+  color: white;
+  background-color: #d33864;
+  border-radius: 5px;
+  margin: 5px;
+  height: 40px;
+  width: 100px;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .add_button:hover {
-    background-color: #cf5678;
+  background-color: #cf5678;
 }
 
 #MuiPagination {
-    width: 50%;
-    position: absolute;
-    bottom: 0;
-    top: 100%;
-    left: 0;
+  width: 50%;
+  position: absolute;
+  bottom: 0;
+  top: 100%;
+  left: 0;
 }
 
 @media (max-width: 992px) {
-    .container_players {
-        left: 80px;
-    }
+  .container_players {
+    left: 80px;
+  }
 }
 
 @media (max-width: 600px) {
-    .search_bar input {
-        width: 100%;
-        height: 35px;
-        padding-right: 1.5rem;
-    }
+  .search_bar input {
+    width: 100%;
+    height: 35px;
+    padding-right: 1.5rem;
+  }
 
-    .add_button {
-        margin: 0px;
-        margin-top: 10px;
-        width: 100%;
-        position: initial;
-    }
+  .add_button {
+    margin: 0px;
+    margin-top: 10px;
+    width: 100%;
+    position: initial;
+  }
 
-    .container_players {
-        margin: 0px;
-        left: 0px;
-        right: 0;
-        top: 80px;
-        position: absolute;
-    }
+  .container_players {
+    margin: 0px;
+    left: 0px;
+    right: 0;
+    top: 80px;
+    position: absolute;
+  }
 }
