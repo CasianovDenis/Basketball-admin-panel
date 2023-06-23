@@ -75,7 +75,7 @@ export default function Team_information() {
         <div className={style.nav_block}>
           <label
             onClick={() => navigate("/Players")}
-            style={{ cursor: "pointer", color: "#d33864" }}
+            style={{ marginLeft: "20px", cursor: "pointer", color: "#d33864" }}
           >
             Teams/
           </label>
