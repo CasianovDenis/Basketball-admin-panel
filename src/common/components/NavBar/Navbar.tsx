@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import {
-  BoxArrowLeft,
+  BoxArrowInRight,
   PersonCircle,
   PeopleFill,
   PersonFill,
@@ -50,7 +50,7 @@ export default function SignIn() {
         >
           <div id="navbarSupportedContent">
             <div className="navbar_user">
-              <PersonCircle color={"gray"} size={30} />
+              <img src="/Icon/profile_icon.svg" />
               <p style={{ marginLeft: "-10px" }}>{decoded_token.user}</p>
             </div>
             <hr />
@@ -82,7 +82,7 @@ export default function SignIn() {
           </div>
 
           <div className="logout" onClick={exit_account}>
-            <BoxArrowLeft size={22} style={{ marginLeft: "20px" }} />
+            <BoxArrowInRight size={22} style={{ marginLeft: "20px" }} />
             <p style={{ marginLeft: "2px" }}>Sign Out</p>
           </div>
         </nav>
@@ -112,7 +112,7 @@ export default function SignIn() {
               <div className="navbar_user">
                 <label style={{ margin: "15px" }}>{decoded_token.user}</label>
 
-                <PersonCircle color={"gray"} size={30} />
+                <img src="/Icon/profile_icon.svg" />
               </div>
             </div>
           </div>
