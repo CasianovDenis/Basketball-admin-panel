@@ -1,199 +1,192 @@
 .container {
-    width: 70%;
-    height: 85%;
-    background-color: white;
-    margin: 90px;
-    left: 160px;
-    right: 0;
-    top: 0;
-    position: absolute;
+  width: 70%;
+  height: 100v;
+  background-color: white;
+  margin: 90px;
+  left: 160px;
+  right: 0;
+  top: 0;
+  position: absolute;
 }
 
 .container_editplayer {
-    display: flex;
-    margin: 50px;
+  display: flex;
+  margin: 50px;
 }
 
 .inputBox {
-    width: 80%;
-    height: 80%;
-    position: relative;
-    left: 100px;
+  width: 80%;
+  height: 80%;
+  position: relative;
+  left: 100px;
 }
 
 .inputBox input::-webkit-outer-spin-button,
 .inputBox input::-webkit-inner-spin-button {
-    display: none;
+  display: none;
 }
 
 .inputBox input {
-    border-radius: 3px;
-    background-color: #f6f6f6;
-    border: 0;
-    width: 70%;
-    height: 35px;
+  border-radius: 3px;
+  background-color: #f6f6f6;
+  border: 0;
+  width: 70%;
+  height: 35px;
 }
 
 .inputBox input:hover {
-    background-color: #9c9c9c;
+  background-color: #9c9c9c;
 }
 
 .inputBox input:focus {
-    outline-color: rgb(90, 90, 182);
+  outline-color: rgb(90, 90, 182);
 }
 
 .personal_data_container {
-    display: grid;
-    grid-template-columns: 170px 25% 170px 25%;
-    grid-template-rows: 80px auto auto auto;
-}
-
-.personal_data_container input {
-    width: 100%;
-    margin-top: 30px;
-    margin-left: -170px;
+  display: grid;
+  grid-template-columns: 41% 41%;
 }
 
 #cancel_button {
-    outline: 0;
-    border-color: #9c9c9c;
-    color: gray;
-    background-color: white;
-    border-radius: 5px;
-    margin: 5px;
-    height: 40px;
-    width: 130px;
-    margin-top: 20px;
+  outline: 0;
+  border-color: #9c9c9c;
+  color: gray;
+  background-color: white;
+  border-radius: 5px;
+  margin: 5px;
+  height: 40px;
+  width: 150px;
+  margin-top: 20px;
 }
 
 #cancel_button:hover {
-    background-color: #9c9c9c;
+  background-color: #9c9c9c;
 }
 
 #save_button {
-    border: 0;
-    color: white;
-    background-color: #d33864;
-    border-radius: 5px;
-    margin: 5px;
-    height: 40px;
-    width: 130px;
-    margin-left: 31%;
+  border: 0;
+  color: white;
+  background-color: #d33864;
+  border-radius: 5px;
+  margin: 5px;
+  height: 40px;
+  width: 150px;
+  margin-left: 10%;
 }
 
 #save_button:hover {
-    background-color: #cf5678;
+  background-color: #cf5678;
 }
 
 .upload_image {
-    width: 50%;
-    height: 50%;
-    background-color: #d1d1d1;
-    border-radius: 10px;
-    position: relative;
-    left: 20px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 200px;
+  width: 50%;
+  height: 50%;
+  background-color: #d1d1d1;
+  border-radius: 10px;
+  position: relative;
+  left: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 200px;
+  cursor: pointer;
 }
 
 .upload_image label {
-    width: 300px;
-    height: 200px;
+  width: 300px;
+  height: 200px;
+  cursor: pointer;
 }
 
-.upload_image svg {
-    position: absolute;
-    left: 45%;
-    top: 35%;
+.upload_image img {
+  position: absolute;
+  left: 38%;
+  top: 25%;
 }
 
 @media (max-width: 992px) {
-    .container {
-        left: 80px;
-    }
+  .container {
+    left: 80px;
+  }
 
-    .container_editplayer {
-        display: flex;
-        margin: 10px;
-    }
+  .container_editplayer {
+    display: flex;
+    margin: 10px;
+  }
 
-    .personal_data_container {
-        display: grid;
-        grid-template-columns: 100px auto auto auto;
-    }
+  .upload_image {
+    width: 30%;
+    height: 50%;
+  }
 
-    .personal_data_container input {
-        width: 100%;
-        margin-top: 30px;
-        margin-left: -100px;
-    }
+  #cancel_button {
+    width: 130px;
+    margin-top: 0px;
+  }
 
-    .upload_image {
-        width: 30%;
-        height: 50%;
-    }
-
-    #cancel_button {
-        margin-top: 0px;
-    }
-
-    #save_button {
-        margin-left: 0%;
-    }
+  #save_button {
+    width: 130px;
+    margin-left: 0%;
+  }
 }
 
 @media (max-width: 600px) {
-    .container {
-        width: 100%;
-        height: 90%;
-        background-color: white;
-        margin: 0px;
-        left: 0;
+  .container {
+    width: 100%;
 
-        top: 100px;
-        position: absolute;
-    }
+    background-color: white;
+    margin: 0px;
+    left: 0;
 
-    .container_editplayer {
-        display: flex;
-        flex-direction: column;
-        margin: 0px;
-    }
+    top: 100px;
+    position: absolute;
+  }
 
-    .upload_image {
-        width: 90%;
-        height: 150px;
-        background-color: #d1d1d1;
-        border-radius: 10px;
-        position: relative;
-        left: 10px;
-    }
+  .container_editplayer {
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+  }
 
-    .inputBox {
-        width: 90%;
-        height: 90%;
+  .upload_image {
+    width: 200px;
+    height: 144px;
+    background-color: #d1d1d1;
+    border-radius: 10px;
+    position: relative;
+    left: 10px;
+    margin: auto;
+  }
 
-        left: 10px;
-    }
+  .upload_image img {
+    width: 50px;
+    height: 50px;
+  }
 
-    .inputBox input {
-        width: 100%;
-    }
+  .inputBox {
+    width: 90%;
+    height: 90%;
 
-    .personal_data_container {
-        display: grid;
-        grid-template-columns: 100px 38% auto 41%;
-        grid-template-rows: initial initial initial initial;
-    }
+    left: 10px;
+  }
 
-    #cancel_button {
-        margin-left: -2px;
-        width: 40%;
-    }
+  .inputBox input {
+    width: 100%;
+  }
 
-    #save_button {
-        width: 40%;
-        margin-left: 17%;
-    }
+  .personal_data_container {
+    grid-template-columns: 55% 55%;
+  }
+  .personal_data_container input {
+    width: 80%;
+  }
+
+  #cancel_button {
+    margin-left: -2px;
+    width: 40%;
+  }
+
+  #save_button {
+    width: 40%;
+    margin-left: 17%;
+  }
 }
