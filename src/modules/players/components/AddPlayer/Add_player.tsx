@@ -102,9 +102,9 @@ export default function Add_player() {
               if (image_url !== null) {
                 let player = {
                   name: name,
-                  number: number,
+                  number: Number(number),
                   position: player_position,
-                  team: player_team,
+                  team: Number(player_team),
                   birthday: birthday,
                   height: height,
                   weight: weight,

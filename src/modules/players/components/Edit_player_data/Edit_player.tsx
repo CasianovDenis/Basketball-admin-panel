@@ -121,14 +121,14 @@ export default function Edit_player() {
               if (image_url.length > 0) {
                 let player = {
                   name: name,
-                  number: number,
+                  number: Number(number),
                   position: player_position,
                   team: player_team,
                   birthday: birthday,
                   height: height,
                   weight: weight,
                   avatarUrl: image_url,
-                  id: player_id,
+                  id: Number(player_id),
                 };
                 Update_player(player, function (result: any) {});
                 navigate("/PlayerInformation", {
@@ -189,15 +189,16 @@ export default function Edit_player() {
             <form>
               <p>Name</p>
               <input type="text" ref={refName} defaultValue={player_name} />
-
+              <p style={{ color: "red" }}>{wrong_name}</p>
               <p>Position</p>
               <Select_player_position
                 func={set_player_position}
                 position={player_position}
               />
-
+              <p style={{ color: "red" }}>{wrong_position}</p>
               <p>Team</p>
               <Select_team func={set_player_team} team={team_name} />
+              <p style={{ color: "red" }}>{wrong_team}</p>
               <div className={style.personal_data_container}>
                 <div>
                   <p>Height(cm)</p>
@@ -207,6 +208,7 @@ export default function Edit_player() {
                     ref={refHeight}
                     defaultValue={player_height}
                   />
+                  <p style={{ color: "red" }}>{wrong_height}</p>
                 </div>
                 <div>
                   <p>Weight(kg)</p>
@@ -216,6 +218,7 @@ export default function Edit_player() {
                     ref={refWeight}
                     defaultValue={player_weight}
                   />
+                  <p style={{ color: "red" }}>{wrong_weight}</p>
                 </div>
                 <div>
                   <p>Birthday</p>
@@ -224,6 +227,7 @@ export default function Edit_player() {
                     ref={refBirthday}
                     defaultValue={player_birthday}
                   />
+                  <p style={{ color: "red" }}>{wrong_birthday}</p>
                 </div>
                 <div>
                   <p>Number</p>
@@ -233,9 +237,9 @@ export default function Edit_player() {
                     ref={refNumber}
                     defaultValue={player_number}
                   />
+                  <p style={{ color: "red" }}>{wrong_number}</p>
                 </div>
               </div>
-              <p style={{ color: "red" }}>{message}</p>
             </form>
             <button id={style.cancel_button} onClick={cancel_uplaod}>
               Cancel
@@ -243,6 +247,7 @@ export default function Edit_player() {
             <button id={style.save_button} onClick={save_team}>
               Save
             </button>
+            <p style={{ color: "red" }}>{message}</p>
           </div>
         </div>
       </div>
