@@ -97,16 +97,17 @@ export default function Edit_team() {
         setWrongDivision("");
         if (yearfoundation.length > 0 && yearfoundation.length <= 4) {
           if (image_url !== null) {
-            Update_team(
-              name,
-              yearfoundation,
-              division,
-              conference,
-              image_url,
-              team_id,
-              function (result: any) {}
-            );
-            navigate("/PlayerInformation", {
+            let team = {
+              team_name: name,
+              team_yearfoundation: Number(yearfoundation),
+              team_division: division,
+              team_conference: conference,
+              image_url: image_url,
+              id: team_id,
+            };
+
+            Update_team(team, function (result: any) {});
+            navigate("/TeamInformation", {
               state: { team_id: team_id },
             });
             setMessage("");
@@ -158,7 +159,7 @@ export default function Edit_team() {
                 ref={refDivision}
                 defaultValue={team_division}
               />
-              <p style={{ color: "red" }}>{wrong_name}</p>
+              <p style={{ color: "red" }}>{wrong_division}</p>
               <p>Conference</p>
               <input
                 type="text"

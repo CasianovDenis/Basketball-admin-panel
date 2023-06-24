@@ -75,14 +75,14 @@ export default function Add_team() {
         setWrongDivision("");
         if (yearfoundation.length > 0 && yearfoundation.length <= 4) {
           if (image_url !== null) {
-            Create_team(
-              name,
-              yearfoundation,
-              division,
-              conference,
-              image_url,
-              function (result: any) {}
-            );
+            let team = {
+              team_name: name,
+              team_yearfoundation: Number(yearfoundation),
+              team_division: division,
+              team_conference: conference,
+              image_url: "http://dev.trainee.dex-it.ru" + image_url,
+            };
+            Create_team(team, function (result: any) {});
 
             refName.current.value = "";
             refDivision.current.value = "";
