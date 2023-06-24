@@ -32,7 +32,7 @@
 .team_information {
   width: 100%;
   display: flex;
-  background-color: #484848;
+  background: linear-gradient(121.57deg, #707070 1.62%, #393939 81.02%);
   border-radius: 5px;
 
   border-top-right-radius: 0px;
