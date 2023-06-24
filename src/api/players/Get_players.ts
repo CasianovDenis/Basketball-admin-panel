@@ -1,10 +1,10 @@
 import Toastify from "toastify-js";
 
 export default function Get_players(
-  player_name: any,
-  page_number: any,
-  page_size: any,
-  id_team: any,
+  player_name: string,
+  page_number: number,
+  page_size: number,
+  id_team: number,
   callback: any
 ) {
   const token = localStorage.getItem("JWToken");

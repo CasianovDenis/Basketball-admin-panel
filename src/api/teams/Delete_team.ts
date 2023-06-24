@@ -1,6 +1,6 @@
 import Toastify from "toastify-js";
 
-export default function Delete_team(team_id: any, callback: any) {
+export default function Delete_team(team_id?: number, callback?: any) {
   const token = localStorage.getItem("JWToken");
 
   const requestOptions = {

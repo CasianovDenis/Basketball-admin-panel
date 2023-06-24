@@ -1,6 +1,10 @@
 import Toastify from "toastify-js";
+import Player_objectOptions from "../../common/interfaces/Player_objectOptions";
 
-export default function Update_player(player_object: any, callback: any) {
+export default function Update_player(
+  player_object: Player_objectOptions,
+  callback: any
+) {
   const token = localStorage.getItem("JWToken");
 
   const requestOptions = {

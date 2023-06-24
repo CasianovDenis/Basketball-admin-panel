@@ -1,6 +1,4 @@
-import Toastify from "toastify-js";
-
-export default function Get_player(player_id: any, callback: any) {
+export default function Get_player(player_id?: number, callback?: any) {
   const token = localStorage.getItem("JWToken");
 
   const requestOptions = {
@@ -19,15 +17,4 @@ export default function Get_player(player_id: any, callback: any) {
     .then((response) => {
       callback([response]);
     });
-  /*.catch((ex) => {
-      Toastify({
-        text: "Team not exist ",
-        className: "info",
-        style: {
-          background: "linear-gradient(to right, #eb3349, #f45c43)",
-        },
-      }).showToast();*/
-  //localStorage.removeItem("JWToken");
-  //window.location.assign("/");
-  //});
 }

@@ -1,12 +1,8 @@
 import Toastify from "toastify-js";
+import Team_objectOptions from "../../common/interfaces/Team_objectOptions";
 
 export default function Update_player(
-  team_name: any,
-  team_yearfoundation: any,
-  team_division: any,
-  team_conference: any,
-  image_url: any,
-  team_id: any,
+  team_object: Team_objectOptions,
   callback: any
 ) {
   const token = localStorage.getItem("JWToken");
@@ -18,12 +14,12 @@ export default function Update_player(
       Authorization: "Bearer " + token,
     },
     body: JSON.stringify({
-      name: team_name,
-      foundationYear: team_yearfoundation,
-      division: team_division,
-      conference: team_conference,
-      imageUrl: image_url,
-      id: team_id,
+      name: team_object.team_name,
+      foundationYear: team_object.team_yearfoundation,
+      division: team_object.team_division,
+      conference: team_object.team_conference,
+      imageUrl: team_object.image_url,
+      id: team_object.id,
     }),
   };
 
