@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../css/card_content.css";
+
 import style from "./Teams.module.css";
+import style_card from "./card_content_teams.module.css";
 import "../css/empty_content.css";
 import { Search } from "react-bootstrap-icons";
 import Pagination from "@mui/material/Pagination";
@@ -31,7 +32,7 @@ export default function Teams() {
         let sum = count_records + page_size;
         let pagination_count = sum / page_size;
         setPageCount(Math.trunc(pagination_count));
-      }
+      } else setPageCount(1);
     });
   }, [request]);
 
@@ -56,11 +57,21 @@ export default function Teams() {
     navigate("/TeamInformation", { state: { team_id: id } });
   };
 
+  const search_teams = (ev: any) => {
+    let text =
+      ev.target.value.charAt(0).toUpperCase() + ev.target.value.slice(1);
+    setTeamName(text);
+
+    request === false ? setRequest(true) : setRequest(false);
+
+    console.log(ev.target);
+  };
+
   if (teams !== null && teams.length > 0)
     return (
       <div className={style.container_teams}>
         <div className={style.search_bar}>
-          <input type="text" placeholder="Search..." />
+          <input type="text" placeholder="Search..." onChange={search_teams} />
           <span>
             <Search size={15} />
           </span>
@@ -76,12 +87,12 @@ export default function Teams() {
         {teams.map((item) => {
           return (
             <div
-              className="card_container"
+              className={style_card.card_container}
               id={item["id"]}
               onClick={open_team_information}
             >
               <img src={item["imageUrl"]} alt={item["name"]} id={item["id"]} />
-              <div className="carousel-caption d-md-block" id={item["id"]}>
+              <div className={style_card.carousel_caption} id={item["id"]}>
                 <h5 id={item["id"]}>{item["name"]}</h5>
                 <p id={item["id"]}>
                   Year of foundation {item["foundationYear"]}
@@ -105,7 +116,7 @@ export default function Teams() {
     return (
       <div className={style.container_teams}>
         <div className={style.search_bar}>
-          <input type="text" placeholder="Search..." />
+          <input type="text" placeholder="Search..." onChange={search_teams} />
           <span>
             <Search size={15} />
           </span>

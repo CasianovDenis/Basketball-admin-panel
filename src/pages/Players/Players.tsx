@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import style from "./Players.module.css";
+import style_card from "./card_content_players.module.css";
+
 import "../css/empty_content.css";
-import "../css/card_content.css";
 
 import { Search } from "react-bootstrap-icons";
 import { useNavigate } from "react-router-dom";
@@ -48,7 +49,7 @@ export default function Players() {
             let sum = count_records + page_size;
             let pagination_count = sum / page_size;
             setPageCount(Math.trunc(pagination_count));
-          }
+          } else setPageCount(1);
         }
       );
     });
@@ -74,6 +75,18 @@ export default function Players() {
 
     navigate("/PlayerInformation", { state: { player_id: id } });
   };
+
+  const search_players = (ev: any) => {
+    let text =
+      ev.target.value.charAt(0).toUpperCase() + ev.target.value.slice(1);
+
+    setPlayerName(text);
+
+    request === false ? setRequest(true) : setRequest(false);
+
+    console.log(ev.target);
+  };
+
   if (players !== null && players.length > 0)
     return (
       <div className={style.container_players}>
@@ -81,13 +94,7 @@ export default function Players() {
           <input
             type="text"
             placeholder="Search..."
-            onClick={() => {
-              {
-                players.map((item) => {
-                  console.log(item["team"]);
-                });
-              }
-            }}
+            onChange={search_players}
           />
           <span>
             <Search size={15} />
@@ -104,12 +111,12 @@ export default function Players() {
         {players.map((item) => {
           return (
             <div
-              className="card_container"
+              className={style_card.card_container}
               id={item["id"]}
               onClick={open_player_information}
             >
               <img src={item["avatarUrl"]} alt={item["name"]} id={item["id"]} />
-              <div className="carousel-caption d-md-block" id={item["id"]}>
+              <div className={style_card.carousel_caption} id={item["id"]}>
                 <h5 id={item["id"]}>
                   {item["name"]}&nbsp;
                   <label style={{ color: "#d33864" }}>#{item["number"]}</label>
@@ -134,7 +141,11 @@ export default function Players() {
     return (
       <div className={style.container_players}>
         <div className={style.search_bar}>
-          <input type="text" placeholder="Search..." />
+          <input
+            type="text"
+            placeholder="Search..."
+            onChange={search_players}
+          />
           <span>
             <Search size={15} />
           </span>
