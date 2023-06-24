@@ -50,9 +50,9 @@ export default function Player_information() {
             >
               Players/
             </label>
-          </div>
-          <label style={{ color: "#d33864" }}>{player_name}</label>
 
+            <label style={{ color: "#d33864" }}>{player_name}</label>
+          </div>
           <div className={style.action_container}>
             <img
               src="/Icon/create_icon.svg"
@@ -74,16 +74,26 @@ export default function Player_information() {
                 <label style={{ color: "#d33864" }}>#{item["number"]}</label>
               </p>
               <div className={style.personal_player_information}>
-                <h5>Positition</h5>
-                <p>{item["position"]}</p>
-                <h5>Team</h5>
-                <p>{item["teamName"]}</p>
-                <h5>Height</h5>
-                <p>{item["height"]} cm</p>
-                <h5>Weight</h5>
-                <p>{item["weight"]} kg</p>
-                <h5>Age</h5>
-                <p>{player_age}</p>
+                <div>
+                  <h5>Positition</h5>
+                  <p>{item["position"]}</p>
+                </div>
+                <div>
+                  <h5>Team</h5>
+                  <p>{item["teamName"]}</p>
+                </div>
+                <div>
+                  <h5>Height</h5>
+                  <p>{item["height"]} cm</p>
+                </div>
+                <div>
+                  <h5>Weight</h5>
+                  <p>{item["weight"]} kg</p>
+                </div>
+                <div>
+                  <h5>Age</h5>
+                  <p>{player_age}</p>
+                </div>
               </div>
             </div>
           );
