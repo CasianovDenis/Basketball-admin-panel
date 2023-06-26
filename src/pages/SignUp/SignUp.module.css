@@ -2,45 +2,49 @@
   background-color: white;
   display: flex;
   flex-direction: row-reverse;
+
   width: 100%;
   height: 100vh;
   position: relative;
 }
 
 .page_title {
-  height: 20px;
-  font-size: 25px;
+  font-size: 36px;
+  margin-left: 15px;
 }
 
 .image_container {
   background-color: #f5fbff;
-  width: 55%;
+  width: 834px;
   display: flex;
 }
 .image_container img {
-  width: 500px;
-  height: 300px;
+  width: 660px;
+  height: 414px;
   margin: auto;
 }
 .signup_input {
   width: 40%;
   height: 40%;
 
-  margin-top: 10%;
+  margin: auto;
+  margin-left: 100px;
+  margin-top: 80px;
 }
 
 .inputBox {
   width: 80%;
   height: 80%;
   position: relative;
+  margin: 15px;
 }
 
 .inputBox input {
   border-radius: 3px;
   background-color: #f6f6f6;
   border: 0;
-  width: 100%;
-  height: 35px;
+  width: 336px;
+  height: 40px;
 }
 
 .inputBox input:hover {
@@ -54,19 +58,23 @@
 #button_signup {
   border: 0;
   outline: 0;
-  width: 80%;
+  width: 336px;
   height: 35px;
   border-radius: 5px;
-  background-color: #d33864;
+  background-color: #e4163a;
   color: white;
   font-size: 16px;
   cursor: pointer;
-  margin-left: 0px;
+  margin-left: 15px;
   margin-top: 10px;
 }
 
-#button_signup :hover {
+#button_signup:hover {
   background-color: #cf5678;
+}
+
+.agreeement_box {
+  margin-left: 15px;
 }
 
 @media (max-width: 990px) {
@@ -91,13 +99,18 @@
   }
 
   .page_title {
-    margin-left: 30%;
+    margin-left: 100px;
+    width: 150px;
   }
 
   .signup_input {
-    width: 90%;
     height: 100%;
-    margin-top: 30%;
-    margin-left: 10%;
+    margin-left: 0%;
+  }
+  #button_signup {
+    width: 327px;
+  }
+  .inputBox input {
+    width: 327px;
   }
 }

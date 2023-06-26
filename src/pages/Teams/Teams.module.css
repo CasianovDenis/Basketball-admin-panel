@@ -19,7 +19,7 @@
   background-color: white;
   border: 0;
 
-  width: 30%;
+  width: 364px;
   height: 35px;
   padding-right: 1.5rem;
 }
@@ -39,11 +39,11 @@
 .add_button {
   border: 0;
   color: white;
-  background-color: #d33864;
+  background-color: #e4163a;
   border-radius: 5px;
   margin: 5px;
   height: 40px;
-  width: 100px;
+  width: 104px;
   position: absolute;
   right: 0;
   top: 0;
@@ -59,6 +59,7 @@
   bottom: 0;
   top: 100%;
   left: 0;
+  background-color: #e4163a;
 }
 
 @media (max-width: 992px) {
@@ -69,15 +70,15 @@
 
 @media (max-width: 600px) {
   .search_bar input {
-    width: 100%;
+    width: 95%;
     height: 35px;
-    padding-right: 1.5rem;
+    margin: 15px;
   }
 
   .add_button {
-    margin: 0px;
+    margin: 15px;
     margin-top: 10px;
-    width: 100%;
+    width: 95%;
     position: initial;
   }
 
@@ -87,5 +88,9 @@
     right: 0;
     top: 80px;
     position: absolute;
+  }
+
+  .search_bar span {
+    margin-left: -40px;
   }
 }

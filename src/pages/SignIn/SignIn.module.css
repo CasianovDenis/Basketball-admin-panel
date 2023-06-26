@@ -1,104 +1,112 @@
 .container_login {
-    background-color: white;
-    display: flex;
-    flex-direction: row-reverse;
-    width: 100%;
-    height: 100vh;
-    position: relative;
+  background-color: white;
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+  height: 100vh;
+  position: relative;
 }
 
 .page_title {
-    height: 20px;
-    font-size: 25px;
+  font-size: 36px;
+  margin-left: 15px;
 }
 
-.image_container{
- background-color:#f5fbff;   
- width:55%;
- display: flex;
+.image_container {
+  background-color: #f5fbff;
+  width: 834px;
+  display: flex;
 }
-.image_container img{
-    width:500px;
-    height:300px;
-    margin:auto
-   }
+.image_container img {
+  width: 605px;
+  height: 412px;
+  margin: auto;
+}
 .login_input {
-    width: 40%;
-    height: 40%;
+  width: 40%;
+  height: 40%;
 
-    margin-top: 10%;
+  margin: auto;
+  margin-left: 100px;
 }
 
 .inputBox {
-    width: 80%;
-    height: 80%;
-    position: relative;
+  width: 80%;
+  height: 80%;
+  position: relative;
+  margin: 15px;
 }
 
 .inputBox input {
-    border-radius: 3px;
-    background-color: #f6f6f6;
-    border: 0;
-    width: 100%;
-    height: 35px;
+  border-radius: 3px;
+  background-color: #f6f6f6;
+  border: 0;
+  width: 366px;
+  height: 40px;
 }
 
 .inputBox input:hover {
-    background-color: #9c9c9c;
+  background-color: #9c9c9c;
 }
 
 .inputBox input:focus {
-    outline-color: rgb(90, 90, 182);
+  outline-color: rgb(90, 90, 182);
 }
 
 #button_login {
-    border: 0;
-    outline: 0;
-    width: 80%;
-    height: 35px;
-    border-radius: 5px;
-    background-color: #d33864;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    margin-left: 0px;
-    margin-top: 10px;
+  border: 0;
+  outline: 0;
+  width: 366px;
+  height: 35px;
+  border-radius: 5px;
+  background-color: #e4163a;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 15px;
+  margin-top: 10px;
 }
 
-#button_login :hover {
-    background-color: #cf5678;
+#button_login:hover {
+  background-color: #cf5678;
 }
 
 @media (max-width: 990px) {
-    .login_input {
-        width: 60%;
-        height: 60%;
-        margin-left: 10%;
-    }
-   
-    .image_container img{
-        width:100%;
-       }
+  .login_input {
+    width: 60%;
+    height: 60%;
+    margin-left: 10%;
+  }
+
+  .image_container img {
+    width: 100%;
+  }
 }
 
 @media (max-width: 600px) {
-    .container_login {
-        flex-direction: column;
-    }
+  .container_login {
+    flex-direction: column;
+  }
 
-   
-.image_container img{
+  .image_container img {
     display: none;
-   }
+  }
 
-    .page_title {
-        margin-left: 30%;
-    }
+  .page_title {
+    width: 200px;
+    margin-left: 130px;
+  }
 
-    .login_input {
-        width: 90%;
-        height: 100%;
-        margin-top: 30%;
-        margin-left: 10%;
-    }
+  .inputBox input {
+    width: 327px;
+  }
+
+  #button_login {
+    width: 327px;
+  }
+  .login_input {
+    height: 100%;
+    margin-top: 30%;
+    margin-left: 0;
+  }
 }
