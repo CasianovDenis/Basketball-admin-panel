@@ -21,11 +21,11 @@ export default function SignIn() {
 
   useEffect(() => {
     if (location.pathname === "/Teams") {
-      setTeamsColor("#d33864");
+      setTeamsColor("#e4163a");
       setPlayersColor("currentColor");
     } else if (location.pathname === "/Players") {
       setTeamsColor("currentColor");
-      setPlayersColor("#d33864");
+      setPlayersColor("#e4163a");
     }
 
     let token = localStorage.getItem("JWToken");
