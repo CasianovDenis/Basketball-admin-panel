@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import style from "./Players.module.css";
 import style_card from "./card_content_players.module.css";
 
-import "../css/empty_content.css";
+import empty_page from "./players_empty_content.module.css";
 
 import { Search } from "react-bootstrap-icons";
 import { useNavigate } from "react-router-dom";
@@ -97,7 +97,7 @@ export default function Players() {
             onChange={search_players}
           />
           <span>
-            <Search size={15} />
+            <Search size={15} fill="gray" />
           </span>
         </div>
 
@@ -147,7 +147,7 @@ export default function Players() {
             onChange={search_players}
           />
           <span>
-            <Search size={15} />
+            <Search size={15} fill="gray" />
           </span>
         </div>
 
@@ -157,10 +157,12 @@ export default function Players() {
         >
           Add +
         </button>
-        <div className="empty_content">
+        <div className={empty_page.empty_container}>
           <img src="/Images/players_empty.png" style={{ width: "300px" }} />
-          <p>Empty Here</p>
-          <label>Add new players to continue</label>
+          <div className={empty_page.card_text}>
+            <p>Empty Here</p>
+            <label>Add new players to continue</label>
+          </div>
         </div>
       </div>
     );

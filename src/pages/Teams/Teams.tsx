@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ReactPaginate from "react-paginate";
 
 import style from "./Teams.module.css";
 import style_card from "./card_content_teams.module.css";
-import "../css/empty_content.css";
+import empty_page from "./teams_empty_content.module.css";
+
 import { Search } from "react-bootstrap-icons";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
@@ -73,7 +75,7 @@ export default function Teams() {
         <div className={style.search_bar}>
           <input type="text" placeholder="Search..." onChange={search_teams} />
           <span>
-            <Search size={15} />
+            <Search size={15} fill="gray" />
           </span>
         </div>
 
@@ -108,6 +110,7 @@ export default function Teams() {
             id={style.MuiPagination}
             color="primary"
             onClick={change_page}
+            shape="rounded"
           />
         </Stack>
       </div>
@@ -118,7 +121,7 @@ export default function Teams() {
         <div className={style.search_bar}>
           <input type="text" placeholder="Search..." onChange={search_teams} />
           <span>
-            <Search size={15} />
+            <Search size={15} fill="gray" />
           </span>
         </div>
 
@@ -128,10 +131,12 @@ export default function Teams() {
         >
           Add +
         </button>
-        <div className="empty_content">
+        <div className={empty_page.empty_container}>
           <img src="/Images/teams_empty.png" />
-          <p>Empty Here</p>
-          <label>Add new teams to continue</label>
+          <div className={empty_page.card_text}>
+            <p>Empty Here</p>
+            <label>Add new teams to continue</label>
+          </div>
         </div>
       </div>
     );
