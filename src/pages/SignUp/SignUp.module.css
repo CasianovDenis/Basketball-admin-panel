@@ -38,7 +38,9 @@
   position: relative;
   margin: 15px;
 }
-
+.inputBox label {
+  width: 300px;
+}
 .inputBox input {
   border-radius: 3px;
   background-color: #f6f6f6;
