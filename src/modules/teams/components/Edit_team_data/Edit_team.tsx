@@ -127,11 +127,11 @@ export default function Edit_team() {
         <div style={{ margin: "20px" }}>
           <label
             onClick={() => navigate("/Teams")}
-            style={{ cursor: "pointer", color: "#d33864" }}
+            style={{ cursor: "pointer", color: "#e4163a" }}
           >
             Teams/
           </label>
-          <label style={{ color: "#d33864" }}>Edit team information</label>
+          <label style={{ color: "#e4163a" }}>Edit team information</label>
         </div>
         <div className={style.container_editteam}>
           <div
@@ -149,32 +149,40 @@ export default function Edit_team() {
           </div>
 
           <div className={style.inputBox}>
-            <form>
-              <p>Name</p>
-              <input type="text" ref={refName} defaultValue={team_name} />
-              <p style={{ color: "red" }}>{wrong_name}</p>
-              <p>Division</p>
-              <input
-                type="text"
-                ref={refDivision}
-                defaultValue={team_division}
-              />
-              <p style={{ color: "red" }}>{wrong_division}</p>
-              <p>Conference</p>
-              <input
-                type="text"
-                ref={refConference}
-                defaultValue={team_conference}
-              />
-              <p style={{ color: "red" }}>{wrong_conference}</p>
-              <p>Year of foundation</p>
-              <input
-                type="number"
-                max="9999"
-                ref={refYearFoundation}
-                defaultValue={team_yearFoundation}
-              />
-              <p style={{ color: "red" }}>{wrong_yearFoundation}</p>
+            <form style={{ display: "flex", flexDirection: "column" }}>
+              <div>
+                <label>Name</label>
+                <input type="text" ref={refName} defaultValue={team_name} />
+                <p style={{ color: "red" }}>{wrong_name}</p>
+              </div>
+              <div>
+                <label>Division</label>
+                <input
+                  type="text"
+                  ref={refDivision}
+                  defaultValue={team_division}
+                />
+                <p style={{ color: "red" }}>{wrong_division}</p>
+              </div>
+              <div>
+                <label>Conference</label>
+                <input
+                  type="text"
+                  ref={refConference}
+                  defaultValue={team_conference}
+                />
+                <p style={{ color: "red" }}>{wrong_conference}</p>
+              </div>
+              <div>
+                <label>Year of foundation</label>
+                <input
+                  type="number"
+                  max="9999"
+                  ref={refYearFoundation}
+                  defaultValue={team_yearFoundation}
+                />
+                <p style={{ color: "red" }}>{wrong_yearFoundation}</p>
+              </div>
             </form>
             <button id={style.cancel_button} onClick={cancel_uplaod}>
               Cancel

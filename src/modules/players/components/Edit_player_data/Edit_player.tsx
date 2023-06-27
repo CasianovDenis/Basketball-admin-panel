@@ -5,7 +5,6 @@ import Toastify from "toastify-js";
 
 import { useNavigate, useLocation } from "react-router-dom";
 
-import { FileEarmarkPlus } from "react-bootstrap-icons";
 import Upload_image from "../../../../api/public/Upload_image";
 import Delete_image from "../../../../api/public/Delete_image";
 import Get_player from "../../../../api/players/Get_player";
@@ -163,12 +162,12 @@ export default function Edit_player() {
         <div style={{ margin: "20px" }}>
           <label
             onClick={() => navigate("/Players")}
-            style={{ cursor: "pointer", color: "#d33864" }}
+            style={{ cursor: "pointer", color: "#e4163a" }}
           >
             Players/
           </label>
 
-          <label style={{ color: "#d33864" }}>Edit player information</label>
+          <label style={{ color: "#e4163a" }}>Edit player information</label>
         </div>
         <div className={style.container_editplayer}>
           <div
@@ -187,21 +186,21 @@ export default function Edit_player() {
 
           <div className={style.inputBox}>
             <form>
-              <p>Name</p>
+              <label>Name</label>
               <input type="text" ref={refName} defaultValue={player_name} />
               <p style={{ color: "red" }}>{wrong_name}</p>
-              <p>Position</p>
+              <label>Position</label>
               <Select_player_position
                 func={set_player_position}
                 position={player_position}
               />
               <p style={{ color: "red" }}>{wrong_position}</p>
-              <p>Team</p>
+              <label>Team</label>
               <Select_team func={set_player_team} team={team_name} />
               <p style={{ color: "red" }}>{wrong_team}</p>
               <div className={style.personal_data_container}>
                 <div>
-                  <p>Height(cm)</p>
+                  <label>Height(cm)</label>
                   <input
                     type="number"
                     max="999"
@@ -211,7 +210,7 @@ export default function Edit_player() {
                   <p style={{ color: "red" }}>{wrong_height}</p>
                 </div>
                 <div>
-                  <p>Weight(kg)</p>
+                  <label>Weight(kg)</label>
                   <input
                     type="number"
                     max="999"
@@ -221,7 +220,7 @@ export default function Edit_player() {
                   <p style={{ color: "red" }}>{wrong_weight}</p>
                 </div>
                 <div>
-                  <p>Birthday</p>
+                  <label>Birthday</label>
                   <input
                     type="date"
                     ref={refBirthday}
@@ -230,7 +229,7 @@ export default function Edit_player() {
                   <p style={{ color: "red" }}>{wrong_birthday}</p>
                 </div>
                 <div>
-                  <p>Number</p>
+                  <label>Number</label>
                   <input
                     type="number"
                     max="999"
