@@ -1,5 +1,5 @@
 import Toastify from "toastify-js";
-import Team_objectOptions from "../../common/interfaces/Team_objectOptions";
+import Team_objectOptions from "../../modules/teams/interfaces/Team_objectOptions";
 
 export default function Create_team(
   team_object: Team_objectOptions,

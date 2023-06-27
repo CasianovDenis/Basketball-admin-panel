@@ -1,5 +1,5 @@
 import Toastify from "toastify-js";
-import Player_objectOptions from "../../common/interfaces/Player_objectOptions";
+import Player_objectOptions from "../../modules/players/interfaces/Player_objectOptions";
 
 export default function Update_player(
   player_object: Player_objectOptions,

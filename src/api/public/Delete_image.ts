@@ -1,6 +1,6 @@
 import Toastify from "toastify-js";
 
-export default function Delete_teams_image(file_name: any, callback: any) {
+export default function Delete_teams_image(file_name: string, callback: any) {
   const token = localStorage.getItem("JWToken");
 
   const requestOptions = {

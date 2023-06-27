@@ -1,4 +1,4 @@
-export default function Get_player(player_id?: number, callback?: any) {
+export default function Get_player(player_id: number, callback: any) {
   const token = localStorage.getItem("JWToken");
 
   const requestOptions = {
