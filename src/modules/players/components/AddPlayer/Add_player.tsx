@@ -13,7 +13,7 @@ import Select_team from "../../../../common/components/Select/Select_team";
 export default function Add_player() {
   const navigate = useNavigate();
   const [image_url, setImageUrl] = useState(null);
-  const [image_name, setImageName] = useState(null);
+  const [image_name, setImageName] = useState("");
 
   const [player_position, setPlayerPosition] = useState(null);
   const [player_team, setPlayerTeam] = useState(null);
@@ -147,11 +147,11 @@ export default function Add_player() {
       <div style={{ margin: "20px" }}>
         <label
           onClick={() => navigate("/Players")}
-          style={{ cursor: "pointer", color: "#d33864" }}
+          style={{ cursor: "pointer", color: "#e4163a" }}
         >
           Players/
         </label>
-        <label style={{ color: "#d33864" }}>Add new player</label>
+        <label style={{ color: "#e4163a" }}>Add new player</label>
       </div>
       <div className={style.container_addplayer}>
         <div
@@ -171,33 +171,33 @@ export default function Add_player() {
 
         <div className={style.inputBox}>
           <form>
-            <p>Name</p>
+            <label>Name</label>
             <input type="text" ref={refName} />
             <p style={{ color: "red" }}>{wrong_name}</p>
-            <p>Position</p>
+            <label>Position</label>
             <Select_player_position func={set_player_position} />
             <p style={{ color: "red" }}>{wrong_position}</p>
-            <p>Team</p>
+            <label>Team</label>
             <Select_team func={set_player_team} />
             <p style={{ color: "red" }}>{wrong_team}</p>
             <div className={style.personal_data_container}>
               <div>
-                <p>Height(cm)</p>
+                <label>Height(cm)</label>
                 <input type="number" max="999" ref={refHeight} />
                 <p style={{ color: "red" }}>{wrong_height}</p>
               </div>
               <div>
-                <p>Weight(kg)</p>
+                <label>Weight(kg)</label>
                 <input type="number" max="999" ref={refWeight} />
                 <p style={{ color: "red" }}>{wrong_weight}</p>
               </div>
               <div>
-                <p>Birthday</p>
+                <label>Birthday</label>
                 <input type="date" ref={refBirthday} />
                 <p style={{ color: "red" }}>{wrong_birthday}</p>
               </div>
               <div>
-                <p>Number</p>
+                <label>Number</label>
                 <input type="number" max="999" ref={refNumber} />
                 <p style={{ color: "red" }}>{wrong_number}</p>
               </div>

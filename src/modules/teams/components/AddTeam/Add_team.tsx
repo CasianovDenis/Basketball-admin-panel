@@ -10,7 +10,7 @@ import Create_team from "../../../../api/teams/Create_team";
 export default function Add_team() {
   const navigate = useNavigate();
   const [image_url, setImageUrl] = useState(null);
-  const [image_name, setImageName] = useState(null);
+  const [image_name, setImageName] = useState("");
   const [wrong_name, setWrongName] = useState("");
   const [wrong_division, setWrongDivision] = useState("");
   const [wrong_conference, setWrongConference] = useState("");
@@ -107,11 +107,11 @@ export default function Add_team() {
       <div style={{ margin: "20px" }}>
         <label
           onClick={() => navigate("/Teams")}
-          style={{ cursor: "pointer", color: "#d33864" }}
+          style={{ cursor: "pointer", color: "#e4163a" }}
         >
           Teams/
         </label>
-        <label style={{ color: "#d33864" }}>Add new team</label>
+        <label style={{ color: "#e4163a" }}>Add new team</label>
       </div>
       <div className={style.container_addteam}>
         <div
@@ -130,17 +130,17 @@ export default function Add_team() {
         </div>
 
         <div className={style.inputBox}>
-          <form>
-            <p>Name</p>
+          <form style={{ display: "flex", flexDirection: "column" }}>
+            <label>Name</label>
             <input type="text" ref={refName} />
             <p style={{ color: "red" }}>{wrong_name}</p>
-            <p>Division</p>
+            <label>Division</label>
             <input type="text" ref={refDivision} />
             <p style={{ color: "red" }}>{wrong_division}</p>
-            <p>Conference</p>
+            <label>Conference</label>
             <input type="text" ref={refConference} />
             <p style={{ color: "red" }}>{wrong_conference}</p>
-            <p>Year of foundation</p>
+            <label>Year of foundation</label>
             <input type="number" max="9999" ref={refYearFoundation} />
             <p style={{ color: "red" }}>{wrong_yearFoundation}</p>
           </form>
