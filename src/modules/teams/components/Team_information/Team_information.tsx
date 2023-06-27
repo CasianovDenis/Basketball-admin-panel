@@ -75,19 +75,23 @@ export default function Team_information() {
         <div className={style.nav_block}>
           <label
             onClick={() => navigate("/Players")}
-            style={{ marginLeft: "20px", cursor: "pointer", color: "#d33864" }}
+            style={{ marginLeft: "30px", cursor: "pointer", color: "#e4163a" }}
           >
             Teams/
           </label>
-          <label style={{ color: "#d33864" }}>{team_name}</label>
+          <label style={{ color: "#e4163a" }}>{team_name}</label>
 
           <div className={style.action_container}>
             <img
               src="/Icon/create_icon.svg"
               onClick={() => navigate("/EditTeam", { state: { id: team_id } })}
-              style={{ margin: "25px", cursor: "pointer" }}
+              style={{ margin: "15px", cursor: "pointer" }}
             />
-            <Trash size={25} fill="#d33864" onClick={delete_team} />
+            <img
+              style={{ margin: "25px", cursor: "pointer" }}
+              src="/Icon/delete_icon.svg"
+              onClick={delete_team}
+            />
           </div>
         </div>
         {team.map((item) => {
@@ -99,12 +103,18 @@ export default function Team_information() {
                 {item["name"]}
               </p>
               <div className={style.detailed_team_information}>
-                <h5>Year of foundation</h5>
-                <p>{item["foundationYear"]}</p>
-                <h5>Division</h5>
-                <p>{item["division"]}</p>
-                <h5>Conference</h5>
-                <p>{item["conference"]}</p>
+                <div id={style.block_year_foundation}>
+                  <b>Year of foundation</b>
+                  <p>{item["foundationYear"]}</p>
+                </div>
+                <div id={style.block_conference}>
+                  <b>Conference</b>
+                  <p>{item["conference"]}</p>
+                </div>
+                <div id={style.block_division}>
+                  <b>Division</b>
+                  <p>{item["division"]}</p>
+                </div>
               </div>
             </div>
           );
