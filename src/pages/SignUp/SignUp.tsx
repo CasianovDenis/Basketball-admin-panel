@@ -133,13 +133,13 @@ export default function SignUp() {
           <p className={style.page_title}>Sign Up</p>
 
           <div className={style.inputBox}>
-            <label style={{ width: "100px" }}>Name </label>
+            <label>Name </label>
             <input type="text" required ref={refName} />
             <p style={{ color: "red" }}>{wrong_name}</p>
           </div>
 
           <div className={style.inputBox}>
-            <label style={{ width: "100px" }}>Login </label>
+            <label>Login </label>
             <input type="text" required ref={refLogin} />
             <p style={{ color: "red" }}>{wrong_login}</p>
           </div>
