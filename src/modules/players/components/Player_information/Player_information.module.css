@@ -9,20 +9,20 @@
 
 .nav_block {
   background-color: white;
-  height: 50px;
+  height: 69px;
   border-radius: 5px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0px;
 }
 
 .nav_block label {
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .action_container {
   position: absolute;
   right: 0;
-  top: 10px;
+  top: 20px;
 }
 
 .action_container svg {
@@ -41,18 +41,18 @@
 }
 
 #player_name {
-  font-size: 25px;
+  font-size: 36px;
   margin-left: 10%;
-  margin-top: 10px;
+  margin-top: 50px;
 }
 
 .personal_player_information {
   display: grid;
   grid-template-columns: 200px 200px;
   position: absolute;
-  right: 0;
+  right: 180px;
   bottom: 0;
-  top: 150px;
+  top: 250px;
 }
 
 .personal_player_information p,
@@ -75,6 +75,14 @@
 
   .player_information img {
     width: 50%;
+  }
+  .personal_player_information {
+    display: grid;
+    grid-template-columns: 100px 100px;
+    position: initial;
+    margin-left: -150px;
+    bottom: 0;
+    margin-top: 100px;
   }
 }
 
@@ -117,5 +125,9 @@
     font-size: 30px;
     margin: auto;
     margin-top: 10px;
+  }
+
+  #block_team p {
+    margin-left: -20px;
   }
 }

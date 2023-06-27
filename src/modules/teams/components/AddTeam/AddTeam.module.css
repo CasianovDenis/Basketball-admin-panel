@@ -1,9 +1,9 @@
 .container {
   width: 70%;
-  height: 100%;
+  height: 565px;
   background-color: white;
-  margin: 90px;
-  left: 190px;
+  margin: 120px;
+  left: 140px;
   right: 0;
   top: 0;
   position: absolute;
@@ -19,9 +19,12 @@
   width: 80%;
   height: 80%;
   position: relative;
-  left: 100px;
+  left: 200px;
 }
 
+.inputBox label {
+  width: 500px;
+}
 .inputBox input::-webkit-outer-spin-button,
 .inputBox input::-webkit-inner-spin-button {
   display: none;
@@ -31,8 +34,8 @@
   border-radius: 3px;
   background-color: #f6f6f6;
   border: 0;
-  width: 70%;
-  height: 35px;
+  width: 366px;
+  height: 40px;
 }
 
 .inputBox input:hover {
@@ -51,7 +54,7 @@
   border-radius: 5px;
   margin: 5px;
   height: 40px;
-  width: 100px;
+  width: 171px;
   margin-top: 20px;
 }
 
@@ -62,11 +65,12 @@
 #save_button {
   border: 0;
   color: white;
-  background-color: #d33864;
+  background-color: #e4163a;
   border-radius: 5px;
   margin: 5px;
   height: 40px;
-  width: 100px;
+  width: 171px;
+  margin-left: 10px;
 }
 
 #save_button:hover {
@@ -88,27 +92,41 @@
 }
 
 .upload_image label {
-  width: 300px;
-  height: 200px;
+  width: 336px;
+  height: 261px;
   cursor: pointer;
 }
 
 .upload_image img {
   position: absolute;
-  left: 38%;
-  top: 25%;
+  left: 40%;
+  top: 35%;
 }
 
 @media (max-width: 992px) {
   .container {
-    left: 80px;
+    width: 100%;
+    left: -100px;
+  }
+
+  #save_button {
+    margin-left: 0;
+  }
+
+  .upload_image label {
+    width: 150px;
+    height: 200px;
+  }
+
+  .inputBox {
+    left: 100px;
   }
 }
 
 @media (max-width: 600px) {
   .container {
     width: 100%;
-    height: 90%;
+    height: 100%;
     background-color: white;
     margin: 0px;
     left: 0;
@@ -141,11 +159,26 @@
   .inputBox {
     width: 90%;
     height: 90%;
+    position: absolute;
+    bottom: 0;
+    top: 400px;
+    left: 20px;
+    margin: auto;
+  }
 
-    left: 10px;
+  .inputBox label {
+    width: 200px;
   }
 
   .inputBox input {
-    width: 100%;
+    width: 327px;
+  }
+
+  #cancel_button {
+    width: 152px;
+  }
+
+  #save_button {
+    width: 152px;
   }
 }

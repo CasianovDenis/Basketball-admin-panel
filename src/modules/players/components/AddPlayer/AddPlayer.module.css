@@ -2,8 +2,8 @@
   width: 70%;
   height: 100v;
   background-color: white;
-  margin: 90px;
-  left: 170px;
+  margin: 130px;
+  left: 100px;
   right: 0;
   top: 0;
   position: absolute;
@@ -33,6 +33,10 @@
   border: 0;
   width: 70%;
   height: 35px;
+}
+
+.inputBox label {
+  width: 400px;
 }
 
 .inputBox input:hover {
@@ -67,7 +71,7 @@
 #save_button {
   border: 0;
   color: white;
-  background-color: #d33864;
+  background-color: #e4163a;
   border-radius: 5px;
   margin: 5px;
   height: 40px;
@@ -100,8 +104,10 @@
 }
 
 .upload_image img {
+  width: 74px;
+  height: 75px;
   position: absolute;
-  left: 38%;
+  left: 37%;
   top: 25%;
 }
 
@@ -156,11 +162,23 @@
     height: 144px;
   }
 
+  .upload_image img {
+    width: 39;
+    height: 35px;
+
+    left: 30%;
+    top: 35%;
+  }
+
   .inputBox {
     width: 90%;
     height: 90%;
 
     left: 10px;
+  }
+
+  .inputBox label {
+    width: 100px;
   }
 
   .inputBox input {

@@ -46,12 +46,12 @@ export default function Player_information() {
           <div style={{ margin: "20px" }}>
             <label
               onClick={() => navigate("/Players")}
-              style={{ cursor: "pointer", color: "#d33864" }}
+              style={{ cursor: "pointer", color: "#e4163a" }}
             >
               Players/
             </label>
 
-            <label style={{ color: "#d33864" }}>{player_name}</label>
+            <label style={{ color: "#e4163a" }}>{player_name}</label>
           </div>
           <div className={style.action_container}>
             <img
@@ -59,9 +59,13 @@ export default function Player_information() {
               onClick={() =>
                 navigate("/EditPlayer", { state: { id: player_id } })
               }
-              style={{ margin: "25px", cursor: "pointer" }}
+              style={{ margin: "15px", cursor: "pointer" }}
             />
-            <Trash size={25} fill="#d33864" onClick={delete_player} />
+            <img
+              style={{ margin: "25px", cursor: "pointer" }}
+              src="/Icon/delete_icon.svg"
+              onClick={delete_player}
+            />
           </div>
         </div>
         {player.map((item) => {
@@ -78,7 +82,7 @@ export default function Player_information() {
                   <h5>Positition</h5>
                   <p>{item["position"]}</p>
                 </div>
-                <div>
+                <div id={style.block_team}>
                   <h5>Team</h5>
                   <p>{item["teamName"]}</p>
                 </div>

@@ -1,6 +1,6 @@
 .container_teamInformation {
-  margin: 90px;
-  left: 90px;
+  margin: 130px;
+  left: 100px;
   right: 0;
   top: 0;
   position: absolute;
@@ -9,14 +9,14 @@
 
 .nav_block {
   background-color: white;
-  height: 50px;
+  height: 69px;
   border-radius: 5px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0px;
 }
 
 .nav_block label {
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .action_container {
@@ -41,34 +41,33 @@
 }
 
 .team_information img {
-  width: 200px;
-  height: 200px;
+  width: 210px;
+  height: 210px;
   margin: 100px;
 }
 
 #team_name {
-  font-size: 25px;
-  margin-left: 18.5%;
-  margin-top: 0px;
+  font-size: 36px;
+  margin-left: 10%;
+  margin-top: 50px;
+  font-weight: bold;
 }
 
 .detailed_team_information {
   display: grid;
-  grid-template-columns: 200px 100px 200px 100px;
-  grid-template-rows: auto auto auto auto;
+  grid-template-columns: 300px 500px;
+  grid-template-rows: 100px;
   position: absolute;
   right: 0;
-  bottom: 0;
-  top: 100px;
+  top: 200px;
+}
+
+.detailed_team_information b {
+  color: white;
+  font-size: 24px;
 }
 
 .detailed_team_information p {
-  margin-top: 30px;
-  margin-left: -198px;
-}
-
-.detailed_team_information p,
-.detailed_team_information h5 {
   color: white;
 }
 
@@ -84,21 +83,19 @@
   }
 
   #team_name {
+    width: 100px;
+    height: 50px;
     font-size: 20px;
-    margin-left: 0%;
+    margin-left: 100px;
     margin-top: 10px;
   }
-
   .detailed_team_information {
     display: grid;
-    grid-template-columns: 100px 100px 100px 100px;
-    grid-template-rows: auto auto auto auto;
-    position: absolute;
-  }
-
-  .detailed_team_information p {
-    margin-top: 45px;
-    margin-left: -95px;
+    grid-template-columns: 300px 500px;
+    grid-template-rows: 100px;
+    position: initial;
+    margin-left: -200px;
+    margin-top: 100px;
   }
 
   .team_information img {
@@ -126,20 +123,34 @@
     border-bottom-right-radius: 0px;
 
     flex-direction: column;
-    height: 100%;
+    height: 590px;
   }
 
   .detailed_team_information {
     grid-template-columns: auto;
-    grid-template-rows: 40px 40px 40px 40px;
 
     position: initial;
     margin: auto;
   }
 
-  .detailed_team_information p {
-    margin-top: 0px;
-    margin-left: 0px;
+  #block_year_foundation p {
+    margin-left: 80px;
+  }
+
+  #block_division p {
+    margin-left: 70px;
+  }
+
+  #block_division b {
+    margin-left: 50px;
+  }
+
+  #block_conference b {
+    margin-left: 30px;
+  }
+
+  #block_conference p {
+    margin-left: 70px;
   }
 
   .team_information img {
@@ -147,8 +158,8 @@
   }
 
   #team_name {
-    font-size: 30px;
+    width: 200px;
     margin: auto;
-    margin-top: 10px;
+    margin-top: 0px;
   }
 }

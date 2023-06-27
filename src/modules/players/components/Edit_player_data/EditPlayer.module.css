@@ -2,8 +2,8 @@
   width: 70%;
   height: 100v;
   background-color: white;
-  margin: 90px;
-  left: 160px;
+  margin: 130px;
+  left: 100px;
   right: 0;
   top: 0;
   position: absolute;
@@ -34,6 +34,9 @@
   height: 35px;
 }
 
+.inputBox label {
+  width: 400px;
+}
 .inputBox input:hover {
   background-color: #9c9c9c;
 }
@@ -55,7 +58,7 @@
   border-radius: 5px;
   margin: 5px;
   height: 40px;
-  width: 150px;
+  width: 171px;
   margin-top: 20px;
 }
 
@@ -66,12 +69,12 @@
 #save_button {
   border: 0;
   color: white;
-  background-color: #d33864;
+  background-color: #e4163a;
   border-radius: 5px;
   margin: 5px;
   height: 40px;
-  width: 150px;
-  margin-left: 10%;
+  width: 171px;
+  margin-left: 20%;
 }
 
 #save_button:hover {
@@ -172,7 +175,9 @@
   .inputBox input {
     width: 100%;
   }
-
+  .inputBox label {
+    width: 100px;
+  }
   .personal_data_container {
     grid-template-columns: 55% 55%;
   }
@@ -182,11 +187,11 @@
 
   #cancel_button {
     margin-left: -2px;
-    width: 40%;
+    width: 152;
   }
 
   #save_button {
-    width: 40%;
+    width: 152;
     margin-left: 17%;
   }
 }
