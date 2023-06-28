@@ -10,6 +10,7 @@
 .navbar-toggler:focus {
   box-shadow: none;
 }
+
 #navbarSupportedContent {
   display: none;
 }
@@ -67,6 +68,9 @@
 }
 
 @media (max-width: 992px) {
+  .sidebar {
+    width: 201px;
+  }
   #navbarSupportedContent {
     display: block;
   }
