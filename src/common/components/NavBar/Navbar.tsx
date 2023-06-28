@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import {
-  BoxArrowInRight,
-  PersonCircle,
-  PeopleFill,
-  PersonFill,
-} from "react-bootstrap-icons";
+import { BoxArrowInRight, PeopleFill, PersonFill } from "react-bootstrap-icons";
 import "./NavBar.css";
 
 export default function SignIn() {
@@ -16,6 +11,7 @@ export default function SignIn() {
 
   const [teams_color, setTeamsColor] = useState("currentColor");
   const [players_color, setPlayersColor] = useState("currentColor");
+  const [button_togler_status, setButtonToglerStatus] = useState(false);
 
   const location = useLocation();
 
@@ -23,9 +19,21 @@ export default function SignIn() {
     if (location.pathname === "/Teams") {
       setTeamsColor("#e4163a");
       setPlayersColor("currentColor");
+
+      let element = document.getElementById("teams_container_content");
+      if (element)
+        button_togler_status === true
+          ? (element.style.opacity = "0.2")
+          : (element.style.opacity = "initial");
     } else if (location.pathname === "/Players") {
       setTeamsColor("currentColor");
       setPlayersColor("#e4163a");
+
+      let element = document.getElementById("players_container_content");
+      if (element)
+        button_togler_status === true
+          ? (element.style.opacity = "0.2")
+          : (element.style.opacity = "initial");
     }
 
     let token = localStorage.getItem("JWToken");
@@ -36,6 +44,25 @@ export default function SignIn() {
     }
   }, [location.pathname]);
 
+  const container_opacity = () => {
+    if (location.pathname === "/Teams") {
+      let element = document.getElementById("teams_container_content");
+      if (element)
+        button_togler_status === false
+          ? (element.style.opacity = "0.2")
+          : (element.style.opacity = "initial");
+    } else if (location.pathname === "/Players") {
+      let element = document.getElementById("players_container_content");
+      if (element)
+        button_togler_status === false
+          ? (element.style.opacity = "0.2")
+          : (element.style.opacity = "initial");
+    }
+
+    button_togler_status === false
+      ? setButtonToglerStatus(true)
+      : setButtonToglerStatus(false);
+  };
   const exit_account = () => {
     localStorage.removeItem("JWToken");
     setDecoded_token(null);
@@ -50,8 +77,11 @@ export default function SignIn() {
         >
           <div id="navbarSupportedContent">
             <div className="navbar_user">
-              <img src="/Icon/profile_icon.svg" />
-              <p style={{ marginLeft: "-10px" }}>{decoded_token.user}</p>
+              <img
+                src="/Icon/profile_icon.svg"
+                style={{ width: "48px", height: "48px" }}
+              />
+              <p style={{ marginLeft: "20px" }}>{decoded_token.user}</p>
             </div>
             <hr />
           </div>
@@ -100,6 +130,7 @@ export default function SignIn() {
               aria-controls="sidebarMenu "
               aria-expanded="true"
               aria-label="Toggle navigation"
+              onClick={container_opacity}
             >
               <span className="navbar-toggler-icon"></span>
             </button>
