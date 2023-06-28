@@ -4,6 +4,11 @@ import { useNavigate, useLocation } from "react-router-dom";
 import Toastify from "toastify-js";
 import "../../../../pages/css/loading_spinner.css";
 
+import { useDispatch } from "react-redux";
+import { store } from "../../../../configs/redux/store/store";
+import { RootState } from "../../../../configs/redux/store/store";
+import { saveImageName } from "../../../../configs/redux/actions/ImageData";
+
 import Upload_image from "../../../../api/public/Upload_image";
 import Delete_image from "../../../../api/public/Delete_image";
 import Update_team from "../../../../api/teams/Update_team";
@@ -12,9 +17,9 @@ import Get_team from "../../../../api/teams/Get_team";
 export default function Edit_team() {
   const navigate = useNavigate();
   const location = useLocation();
+  const dispatch = useDispatch();
 
   const [image_url, setImageUrl] = useState("");
-  const [image_name, setImageName] = useState(null);
   const [message, setMessage] = useState("");
   const [team_name, setTeamName] = useState("");
   const [team_division, setTeamDivision] = useState("");
@@ -63,13 +68,14 @@ export default function Edit_team() {
       const get_name = resultFromfunction.slice(
         resultFromfunction.indexOf("/") + 8
       );
-      setImageName(get_name);
+      dispatch(saveImageName(get_name.toString()));
     });
   };
 
   const cancel_uplaod = () => {
-    if (image_name !== null)
-      Delete_image(image_name, function (result: any) {});
+    let value = store.getState();
+    if (value.data.name_img !== null)
+      Delete_image(value.data.name_img, function (result: any) {});
     setImageUrl("");
     navigate("/Teams");
   };

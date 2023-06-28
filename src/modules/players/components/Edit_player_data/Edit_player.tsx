@@ -4,6 +4,10 @@ import "../../../../pages/css/loading_spinner.css";
 import Toastify from "toastify-js";
 
 import { useNavigate, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { store } from "../../../../configs/redux/store/store";
+import { RootState } from "../../../../configs/redux/store/store";
+import { saveImageName } from "../../../../configs/redux/actions/ImageData";
 
 import Upload_image from "../../../../api/public/Upload_image";
 import Delete_image from "../../../../api/public/Delete_image";
@@ -16,10 +20,10 @@ import Select_team from "../../../../common/components/Select/Select_team";
 export default function Edit_player() {
   const navigate = useNavigate();
   const location = useLocation();
+  const dispatch = useDispatch();
 
   const player_id = location.state.id;
   const [image_url, setImageUrl] = useState("");
-  const [image_name, setImageName] = useState(null);
   const [message, setMessage] = useState("");
 
   const [player_position, setPlayerPosition] = useState(null);
@@ -79,13 +83,14 @@ export default function Edit_player() {
       const get_name = resultFromfunction.slice(
         resultFromfunction.indexOf("/") + 8
       );
-      setImageName(get_name);
+      dispatch(saveImageName(get_name.toString()));
     });
   };
 
   const cancel_uplaod = () => {
-    if (image_name !== null)
-      Delete_image(image_name, function (result: any) {});
+    let value = store.getState();
+    if (value.data.name_img !== null)
+      Delete_image(value.data.name_img, function (result: any) {});
     setImageUrl("");
     navigate("/Players");
   };

@@ -2,6 +2,9 @@ import React, { useEffect, useState, createRef } from "react";
 import style from "./AddPlayer.module.css";
 import { useNavigate } from "react-router-dom";
 import Toastify from "toastify-js";
+import { useSelector, useDispatch } from "react-redux";
+import { saveImageName } from "../../../../configs/redux/actions/ImageData";
+import { store } from "../../../../configs/redux/store/store";
 
 import Upload_image from "../../../../api/public/Upload_image";
 import Delete_image from "../../../../api/public/Delete_image";
@@ -9,11 +12,14 @@ import Create_player from "../../../../api/players/Create_player";
 
 import Select_player_position from "../../../../common/components/Select/Select_player_position";
 import Select_team from "../../../../common/components/Select/Select_team";
+import { RootState } from "../../../../configs/redux/store/store";
 
 export default function Add_player() {
   const navigate = useNavigate();
   const [image_url, setImageUrl] = useState(null);
-  const [image_name, setImageName] = useState("");
+
+  //const image_data = useSelector((state: RootState) => state.data.name_img);
+  const dispatch = useDispatch();
 
   const [player_position, setPlayerPosition] = useState(null);
   const [player_team, setPlayerTeam] = useState(null);
@@ -54,12 +60,15 @@ export default function Add_player() {
       const get_name = resultFromfunction.slice(
         resultFromfunction.indexOf("/") + 8
       );
-      setImageName(get_name);
+
+      dispatch(saveImageName(get_name.toString()));
     });
   };
 
   const cancel_uplaod = () => {
-    Delete_image(image_name, function (result: any) {});
+    let value = store.getState();
+
+    Delete_image(value.data.name_img, function (result: any) {});
     setImageUrl(null);
     navigate("/Players");
   };

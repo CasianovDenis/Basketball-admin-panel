@@ -3,6 +3,11 @@ import style from "./AddTeam.module.css";
 import { useNavigate } from "react-router-dom";
 import Toastify from "toastify-js";
 
+import { useDispatch } from "react-redux";
+import { saveImageName } from "../../../../configs/redux/actions/ImageData";
+import { store } from "../../../../configs/redux/store/store";
+import { RootState } from "../../../../configs/redux/store/store";
+
 import Upload_image from "../../../../api/public/Upload_image";
 import Delete_image from "../../../../api/public/Delete_image";
 import Create_team from "../../../../api/teams/Create_team";
@@ -10,7 +15,6 @@ import Create_team from "../../../../api/teams/Create_team";
 export default function Add_team() {
   const navigate = useNavigate();
   const [image_url, setImageUrl] = useState(null);
-  const [image_name, setImageName] = useState("");
   const [wrong_name, setWrongName] = useState("");
   const [wrong_division, setWrongDivision] = useState("");
   const [wrong_conference, setWrongConference] = useState("");
@@ -21,6 +25,8 @@ export default function Add_team() {
     refDivision = createRef<HTMLInputElement>(),
     refConference = createRef<HTMLInputElement>(),
     refYearFoundation = createRef<HTMLInputElement>();
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const token = localStorage.getItem("JWToken");
@@ -42,12 +48,14 @@ export default function Add_team() {
       const get_name = resultFromfunction.slice(
         resultFromfunction.indexOf("/") + 8
       );
-      setImageName(get_name);
+      dispatch(saveImageName(get_name.toString()));
     });
   };
 
   const cancel_uplaod = () => {
-    Delete_image(image_name, function (result: any) {});
+    let value = store.getState();
+
+    Delete_image(value.data.name_img, function (result: any) {});
     setImageUrl(null);
     navigate("/Teams");
   };
