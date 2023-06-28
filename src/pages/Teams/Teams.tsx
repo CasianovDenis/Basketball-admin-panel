@@ -71,7 +71,7 @@ export default function Teams() {
 
   if (teams !== null && teams.length > 0)
     return (
-      <div className={style.container_teams}>
+      <div className={style.container_teams} id="teams_container_content">
         <div className={style.search_bar}>
           <input type="text" placeholder="Search..." onChange={search_teams} />
           <span>
@@ -117,7 +117,7 @@ export default function Teams() {
     );
   else
     return (
-      <div className={style.container_teams}>
+      <div className={style.container_teams} id="teams_container_content">
         <div className={style.search_bar}>
           <input type="text" placeholder="Search..." onChange={search_teams} />
           <span>
