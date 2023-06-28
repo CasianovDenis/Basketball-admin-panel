@@ -1,0 +1,35 @@
+.css-b62m3t-container {
+  height: 35px;
+  position: absolute;
+  left: 390px;
+
+  width: 364px;
+}
+
+.css-tj5bde-Svg:hover {
+  cursor: pointer;
+}
+
+/* added color for selected elements*/
+.css-1p3m7a8-multiValue {
+  background-color: #e4163a !important;
+  color: white;
+}
+
+.css-wsp0cs-MultiValueGeneric {
+  color: white !important;
+}
+@media (max-width: 992px) {
+  .css-b62m3t-container {
+    left: 0px;
+    top: 50px;
+  }
+}
+
+@media (max-width: 600px) {
+  .css-b62m3t-container {
+    left: 15px;
+    top: 65px;
+    width: 95%;
+  }
+}
