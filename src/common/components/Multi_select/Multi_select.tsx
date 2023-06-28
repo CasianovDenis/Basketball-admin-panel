@@ -5,13 +5,7 @@ import Get_teams from "../../../api/teams/Get_teams";
 
 export default function Multi_select(props: any) {
   const [teams, setTeams] = useState([]);
-  const [selected_teams, setSelectedTeams] = useState([]);
 
-  const options = [
-    { value: "chocolate", label: "Chocolate" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" },
-  ];
   useEffect(() => {
     Get_teams("", 0, 0, function (result: any) {
       const select_options = result.data.map(
