@@ -9,9 +9,9 @@
 }
 
 .search_bar {
-  width: 100%;
+  width: 50%;
   position: relative;
-  top: -32px;
+  left: -365px;
 }
 
 .search_bar input {
@@ -68,6 +68,12 @@
 @media (max-width: 992px) {
   .container_players {
     left: 80px;
+  }
+  .search_bar {
+    width: 100%;
+    position: relative;
+    left: 0px;
+    top: -50px;
   }
 }
 
