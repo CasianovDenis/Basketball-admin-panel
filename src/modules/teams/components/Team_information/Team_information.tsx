@@ -26,40 +26,46 @@ export default function Team_information() {
       setTeam(resultfromFunction);
       setTeamName(resultfromFunction[0].name);
 
-      Get_players("", 1, 6, resultfromFunction[0].id, function (result: any) {
-        const date = new Date();
-        let actual_year = date.getFullYear();
+      Get_players(
+        "",
+        1,
+        6,
+        [{ team_id: resultfromFunction[0].id }],
+        function (result: any) {
+          const date = new Date();
+          let actual_year = date.getFullYear();
 
-        const new_array_with_age = result.data.map(
-          ({
-            name,
-            number,
-            avatarUrl,
-            height,
-            weight,
-            position,
-            birthday,
-          }: {
-            number: number;
-            name: string;
-            avatarUrl: string;
-            position: string;
-            height: number;
-            weight: number;
-            birthday: string;
-          }) => ({
-            name: name,
-            number: number,
-            avatarUrl: avatarUrl,
-            height: height,
-            weight: weight,
-            position: position,
-            age: actual_year - new Date(birthday).getFullYear(),
-          })
-        );
+          const new_array_with_age = result.data.map(
+            ({
+              name,
+              number,
+              avatarUrl,
+              height,
+              weight,
+              position,
+              birthday,
+            }: {
+              number: number;
+              name: string;
+              avatarUrl: string;
+              position: string;
+              height: number;
+              weight: number;
+              birthday: string;
+            }) => ({
+              name: name,
+              number: number,
+              avatarUrl: avatarUrl,
+              height: height,
+              weight: weight,
+              position: position,
+              age: actual_year - new Date(birthday).getFullYear(),
+            })
+          );
 
-        setPlayers(new_array_with_age);
-      });
+          setPlayers(new_array_with_age);
+        }
+      );
     });
   }, []);
 
