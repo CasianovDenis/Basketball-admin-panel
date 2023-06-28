@@ -17,7 +17,7 @@ export default function Get_players(
     },
   };
 
-  if (id_teams[0].team_id > 0 && player_name.length > 0) {
+  if (id_teams[0].team_id > 0) {
     let team_id_fetch = "";
     let text = "";
     for (let index = 0; index < id_teams.length; index++) {
