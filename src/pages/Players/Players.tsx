@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import style from "./Players.module.css";
 import style_card from "./card_content_players.module.css";
-
 import empty_page from "./players_empty_content.module.css";
 
 import { Search } from "react-bootstrap-icons";
@@ -11,11 +10,14 @@ import Stack from "@mui/material/Stack";
 import Get_players from "../../api/players/Get_players";
 
 import Get_teams from "../../api/teams/Get_teams";
+import Multi_select from "../../common/components/Multi_select/Multi_select";
 
 export default function Players() {
   const navigate = useNavigate();
 
   const [players, setPlayers] = useState([]);
+  const [player_teams, setPlayersTeams] = useState([{ team_id: 0 }]);
+
   const [player_name, setPlayerName] = useState("");
   const [page_number, setPageNumber] = useState(1);
   const [page_size, setPageSize] = useState(6);
@@ -32,7 +34,7 @@ export default function Players() {
         player_name,
         page_number,
         page_size,
-        0,
+        player_teams,
         function (result: any) {
           let players_array = result.data;
           for (let index = 0; players_array.length > index; index++) {
@@ -83,13 +85,22 @@ export default function Players() {
     setPlayerName(text);
 
     request === false ? setRequest(true) : setRequest(false);
-
-    console.log(ev.target);
   };
 
+  const selected_teams = (ev: any) => {
+    const teams_id = ev.map(({ team_id }: { team_id: number }) => ({
+      team_id,
+    }));
+
+    if (ev.length <= 0) setPlayersTeams([{ team_id: 0 }]);
+    else setPlayersTeams(teams_id);
+
+    request === false ? setRequest(true) : setRequest(false);
+  };
   if (players !== null && players.length > 0)
     return (
-      <div className={style.container_players}>
+      <div className={style.container_players} id="players_container_content">
+        <Multi_select func={selected_teams} />
         <div className={style.search_bar}>
           <input
             type="text"
@@ -133,13 +144,15 @@ export default function Players() {
             id={style.MuiPagination}
             color="primary"
             onClick={change_page}
+            shape="rounded"
           />
         </Stack>
       </div>
     );
   else
     return (
-      <div className={style.container_players}>
+      <div className={style.container_players} id="players_container_content">
+        <Multi_select func={selected_teams} />
         <div className={style.search_bar}>
           <input
             type="text"
