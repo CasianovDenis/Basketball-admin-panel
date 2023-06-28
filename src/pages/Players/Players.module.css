@@ -11,13 +11,16 @@
 .search_bar {
   width: 100%;
   position: relative;
-  top: 5px;
+  top: -32px;
 }
 
 .search_bar input {
   border-radius: 3px;
   background-color: white;
-  border: 0;
+  border-color: hsl(0, 0%, 80%);
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
 
   width: 364px;
   height: 35px;
@@ -45,8 +48,9 @@
   height: 40px;
   width: 104px;
   position: absolute;
-  right: 0;
+
   top: 0;
+  left: 80%;
 }
 
 .add_button:hover {
@@ -68,6 +72,10 @@
 }
 
 @media (max-width: 600px) {
+  .search_bar {
+    top: -30px;
+  }
+
   .search_bar input {
     width: 95%;
     height: 35px;
@@ -76,7 +84,7 @@
 
   .add_button {
     margin: 15px;
-    margin-top: 10px;
+    margin-top: 20px;
     width: 95%;
     position: initial;
   }
@@ -91,5 +99,13 @@
 
   .search_bar span {
     margin-left: -40px;
+  }
+  #MuiPagination {
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    top: 90%;
+
+    left: 0;
   }
 }
