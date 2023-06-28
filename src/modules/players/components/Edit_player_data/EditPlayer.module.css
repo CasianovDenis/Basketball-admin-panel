@@ -187,11 +187,11 @@
 
   #cancel_button {
     margin-left: -2px;
-    width: 152;
+    width: 130px;
   }
 
   #save_button {
-    width: 152;
-    margin-left: 17%;
+    width: 130px;
+    margin-left: 15%;
   }
 }
